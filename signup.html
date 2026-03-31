@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sign Up - Bridges LMS</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="auth.css">
+</head>
+<body>
+
+<div class="auth-wrapper">
+
+  <div class="auth-left">
+    <img src="./assets/BridgesLibraryPhoto1.jpg" alt="Library Image">
+    <div class="overlay-text">
+      <h2>Join Bridges LMS</h2>
+      <p>Start your reading journey today</p>
+    </div>
+  </div>
+
+
+  <div class="auth-right">
+
+    <a href="index.html" class="back-home">← Back</a>
+
+    <h2>Sign Up</h2>
+    <p class="subtitle">Create your account</p>
+
+    <form id="signupForm" action="signup.php" method="POST">
+      <label>Email</label>
+      <input type="email" name="email" placeholder="Enter email" required>
+
+      <label>Password</label>
+      <input type="password" name="password" placeholder="Enter password" required>
+
+      <button type="submit">Sign Up</button>
+    </form>
+
+    <p class="switch">
+      Already have an account? <a href="login.html">Login</a>
+    </p>
+
+  </div>
+</div>
+
+<script src="auth.js"></script>
+</body>
+</html>
