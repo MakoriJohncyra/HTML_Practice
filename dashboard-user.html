@@ -1,0 +1,560 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="bridges-lms.css">
+  <title>Dashboard — Bridges LMS</title>
+</head>
+<body>
+
+<!-- ── Header ────────────────────────────────────────────── -->
+<header class="app-header">
+  <a class="header-logo" href="#" onclick="switchView('u-home')">
+    <img src="/assets/BRIDGESLOGO.png" alt="Bridges LMS Logo" class="header-logo-img" />
+    <div class="header-logo-text"><span>LMS</span></div>
+  </a>
+  <ul class="header-nav">
+    <li id="unav-home" class="active" onclick="switchView('u-home')"><i class="bi bi-house-door-fill" aria-hidden="true"></i> Home</li>
+    <li id="unav-search" onclick="switchView('u-search')"><i class="bi bi-search" aria-hidden="true"></i> Search Books</li>
+    <li id="unav-issue" onclick="switchView('u-issue')"><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i> Borrow Book</li>
+    <li id="unav-return" onclick="switchView('u-return')"><i class="bi bi-box-arrow-in-down" aria-hidden="true"></i> Return Book</li>
+    <li id="unav-history" onclick="switchView('u-history')"><i class="bi bi-clock-history" aria-hidden="true"></i> My History</li>
+  </ul>
+  <div class="header-right">
+    <div class="notif-btn" title="Notifications">
+      <i class="bi bi-bell-fill" aria-hidden="true"></i>
+      <span class="notif-badge">2</span>
+    </div>
+    <div class="header-user">
+      <div class="header-avatar">J</div>
+      <div>
+        <div class="header-uname">Justo Kimani</div>
+        <div class="header-role">Library Member · Gold</div>
+      </div>
+    </div>
+    <a class="header-logout" href="index.html">Sign Out</a>
+  </div>
+</header>
+
+<!-- ── Body Layout ───────────────────────────────────────── -->
+<div class="user-layout">
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="sidebar-group-label">Main</div>
+    <div class="sidebar-item active" id="usb-home" onclick="switchView('u-home')">
+      <span class="sidebar-icon"><i class="bi bi-house-door-fill" aria-hidden="true"></i></span> Dashboard
+    </div>
+    <div class="sidebar-item" id="usb-search" onclick="switchView('u-search')">
+      <span class="sidebar-icon"><i class="bi bi-search" aria-hidden="true"></i></span> Search Books
+    </div>
+    <div class="sidebar-item" id="usb-issue" onclick="switchView('u-issue')">
+      <span class="sidebar-icon"><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></span> Borrow Book
+    </div>
+    <div class="sidebar-item" id="usb-return" onclick="switchView('u-return')">
+      <span class="sidebar-icon"><i class="bi bi-box-arrow-in-down" aria-hidden="true"></i></span> Return Book
+      <span class="sidebar-badge">1</span>
+    </div>
+    <div class="sidebar-item" id="usb-history" onclick="switchView('u-history')">
+      <span class="sidebar-icon"><i class="bi bi-clock-history" aria-hidden="true"></i></span> Borrow History
+    </div>
+    <div class="sidebar-group-label">Account</div>
+    <div class="sidebar-item" id="usb-profile" onclick="switchView('u-profile')">
+      <span class="sidebar-icon"><i class="bi bi-person-fill" aria-hidden="true"></i></span> My Profile
+    </div>
+    <div class="sidebar-item">
+      <span class="sidebar-icon"><i class="bi bi-bell-fill" aria-hidden="true"></i></span> Notifications
+      <span class="sidebar-badge">2</span>
+    </div>
+    <div class="sidebar-item sidebar-signout" onclick="window.location.href='login.html'">
+      <span class="sidebar-icon"><i class="bi bi-box-arrow-right" aria-hidden="true"></i></span> Sign Out
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="user-main">
+
+    <!-- ── HOME VIEW ─────────────────────────────────────── -->
+    <div id="u-home" class="view active">
+      <div class="page-title-block anim-1">
+        <div class="page-eyebrow">Dashboard</div>
+        <h1 class="page-title">Good morning, <em>Justo</em> <i class="bi bi-sun-fill" aria-hidden="true"></i></h1>
+        <p class="page-subtitle">You have 2 active borrowings. Check due dates below.</p>
+      </div>
+
+      <div class="kpi-grid anim-2">
+        <div class="kpi k-gold">
+          <div class="kpi-icon"><i class="bi bi-book-half" aria-hidden="true"></i></div>
+          <div class="kpi-val">2</div>
+          <div class="kpi-label">Currently Borrowed</div>
+          <div class="kpi-sub warn">1 due in 3 days</div>
+        </div>
+        <div class="kpi k-green">
+          <div class="kpi-icon"><i class="bi bi-check2-circle" aria-hidden="true"></i></div>
+          <div class="kpi-val">18</div>
+          <div class="kpi-label">Total Books Read</div>
+          <div class="kpi-sub"><i class="bi bi-arrow-up-short" aria-hidden="true"></i> 4 this month</div>
+        </div>
+        <div class="kpi k-blue">
+          <div class="kpi-icon"><i class="bi bi-star-fill" aria-hidden="true"></i></div>
+          <div class="kpi-val">0</div>
+          <div class="kpi-label">Pending Fines</div>
+          <div class="kpi-sub">All clear!</div>
+        </div>
+        <div class="kpi k-red">
+          <div class="kpi-icon"><i class="bi bi-trophy-fill" aria-hidden="true"></i></div>
+          <div class="kpi-val">Gold</div>
+          <div class="kpi-label">Membership Tier</div>
+          <div class="kpi-sub">Active since 2024</div>
+        </div>
+      </div>
+
+      <div class="two-col anim-3">
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">Currently Borrowed</span>
+            <button type="button" class="btn btn-outline btn-xs" onclick="switchView('u-return')">Return a Book</button>
+          </div>
+          <div class="card-body">
+            <div id="user-borrowed-list"></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"><span class="card-title">Recent Activity</span></div>
+          <div class="card-body">
+            <div class="activity-feed">
+              <div class="activity-row">
+                <div class="activity-dot activity-dot-gold"></div>
+                <div>
+                  <div class="activity-title">Borrowed <strong>Things Fall Apart</strong></div>
+                  <div class="activity-date">Mar 27, 2026</div>
+                </div>
+              </div>
+              <div class="activity-row">
+                <div class="activity-dot activity-dot-green"></div>
+                <div>
+                  <div class="activity-title">Returned <strong>Purple Hibiscus</strong> — on time <i class="bi bi-check-lg" aria-hidden="true"></i></div>
+                  <div class="activity-date">Mar 22, 2026</div>
+                </div>
+              </div>
+              <div class="activity-row">
+                <div class="activity-dot activity-dot-blue"></div>
+                <div>
+                  <div class="activity-title">Account renewed — <strong>Gold tier</strong></div>
+                  <div class="activity-date">Mar 1, 2026</div>
+                </div>
+              </div>
+              <div class="activity-row">
+                <div class="activity-dot activity-dot-gold"></div>
+                <div>
+                  <div class="activity-title">Borrowed <strong>Algorithms to Live By</strong></div>
+                  <div class="activity-date">Feb 28, 2026</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card card-mt-lg anim-4">
+        <div class="card-header"><span class="card-title">Reading Goal — 2026</span></div>
+        <div class="card-body">
+          <div class="goal-grid">
+            <div>
+              <div class="goal-number">18 <span>/ 50</span></div>
+              <div class="goal-on-track"><i class="bi bi-arrow-up-short" aria-hidden="true"></i> On track!</div>
+            </div>
+            <div>
+              <div class="goal-prog-label">
+                <span>Progress</span><span>36%</span>
+              </div>
+              <div class="prog-wrap prog-wrap-lg">
+                <div class="prog-fill" style="width:36%"></div>
+              </div>
+              <div class="goal-stats">
+                <div class="goal-stat">
+                  <div class="goal-stat-num">7</div>
+                  <div class="goal-stat-lbl">This quarter</div>
+                </div>
+                <div class="goal-stat">
+                  <div class="goal-stat-num">4</div>
+                  <div class="goal-stat-lbl">This month</div>
+                </div>
+                <div class="goal-stat">
+                  <div class="goal-stat-num">14 <i class="bi bi-fire" aria-hidden="true"></i></div>
+                  <div class="goal-stat-lbl">Day streak</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SEARCH VIEW ────────────────────────────────────── -->
+    <div id="u-search" class="view">
+      <div class="page-title-block anim-1">
+        <div class="page-eyebrow">Catalog</div>
+        <h1 class="page-title">Search <em>Books</em></h1>
+        <p class="page-subtitle">Search by title, author, ISBN, or book ID</p>
+      </div>
+      <div class="search-row anim-2">
+        <div class="search-input-wrap">
+          <span class="search-icon"><i class="bi bi-search" aria-hidden="true"></i></span>
+          <input id="u-search-input" type="text" placeholder="Search title, author, ISBN…" oninput="renderSearchResults()"/>
+        </div>
+        <select class="filter-sel" id="u-genre-filter" onchange="renderSearchResults()">
+          <option value="">All Genres</option>
+          <option>Literature</option><option>African Studies</option>
+          <option>Technology</option><option>Business</option>
+          <option>History</option><option>Philosophy</option><option>Science</option>
+        </select>
+        <select class="filter-sel" id="u-avail-filter" onchange="renderSearchResults()">
+          <option value="">All Status</option>
+          <option value="available">Available</option>
+          <option value="borrowed">Borrowed</option>
+        </select>
+      </div>
+      <div class="card anim-3">
+        <div class="card-header">
+          <span class="card-title" id="search-result-count">Showing all books</span>
+        </div>
+        <div class="card-body-flush tbl-wrap">
+          <table>
+            <thead><tr>
+              <th>Book</th><th>Author</th><th>Genre</th>
+              <th>ISBN</th><th>Status</th><th>Action</th>
+            </tr></thead>
+            <tbody id="search-results-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── BORROW VIEW ────────────────────────────────────── -->
+    <div id="u-issue" class="view">
+      <div class="page-title-block anim-1">
+        <div class="page-eyebrow">Borrow</div>
+        <h1 class="page-title">Issue a <em>Book</em></h1>
+        <p class="page-subtitle">Submit a request to borrow a book from the library</p>
+      </div>
+
+      <div class="two-col anim-2">
+        <div>
+          <div class="form-section">
+            <div class="form-section-title">
+              <span class="form-section-icon"><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></span>
+              Borrow Request
+            </div>
+            <div class="form-group">
+              <label class="form-label">Book ID / ISBN</label>
+              <input id="issue-book-id" class="form-input" placeholder="e.g. BK001 or 978-…"
+                oninput="lookupBook('issue-book-id','issue-book-preview')"/>
+            </div>
+            <div id="issue-book-preview" class="alert alert-success" style="display:none">
+              <span class="alert-icon"><i class="bi bi-check-circle-fill" aria-hidden="true"></i></span>
+              <div id="issue-book-preview-text"></div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Your Member ID</label>
+              <input class="form-input readonly-field" value="CS/2024/001" readonly/>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Issue Date</label>
+                <input class="form-input" type="date" id="issue-date"/>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Due Date (14 days)</label>
+                <input class="form-input readonly-field" type="date" id="due-date" readonly/>
+              </div>
+            </div>
+            <div class="alert alert-warn">
+              <span class="alert-icon"><i class="bi bi-exclamation-triangle-fill" aria-hidden="true"></i></span>
+              <div>You may borrow up to <strong>3 books</strong> at a time. Currently borrowing <strong>2 books</strong>. Late returns attract a fine of <strong>KES 10/day</strong>.</div>
+            </div>
+            <button type="button" class="btn btn-gold btn-full" onclick="submitIssue()">
+              Submit Borrow Request <i class="bi bi-arrow-right" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+
+        <div>
+          <div class="card">
+            <div class="card-header"><span class="card-title">Borrowing Policy</span></div>
+            <div class="card-body">
+              <div class="policy-list">
+                <div class="policy-item">
+                  <span class="policy-icon"><i class="bi bi-clipboard-check" aria-hidden="true"></i></span>
+                  <div>
+                    <div class="policy-title">Loan Period</div>
+                    <div class="policy-desc">Standard loan period is <strong>14 days</strong></div>
+                  </div>
+                </div>
+                <div class="policy-item">
+                  <span class="policy-icon"><i class="bi bi-book" aria-hidden="true"></i></span>
+                  <div>
+                    <div class="policy-title">Book Limit</div>
+                    <div class="policy-desc">Maximum of <strong>3 books</strong> at a time</div>
+                  </div>
+                </div>
+                <div class="policy-item">
+                  <span class="policy-icon"><i class="bi bi-cash-coin" aria-hidden="true"></i></span>
+                  <div>
+                    <div class="policy-title">Late Fines</div>
+                    <div class="policy-desc"><strong>KES 10 per day</strong> after due date</div>
+                  </div>
+                </div>
+                <div class="policy-item">
+                  <span class="policy-icon"><i class="bi bi-arrow-repeat" aria-hidden="true"></i></span>
+                  <div>
+                    <div class="policy-title">Renewal</div>
+                    <div class="policy-desc">1 renewal allowed if no holds</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card card-mt">
+            <div class="card-header"><span class="card-title">My Active Borrows</span></div>
+            <div class="card-body">
+              <div id="issue-page-borrows"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── RETURN VIEW ────────────────────────────────────── -->
+    <div id="u-return" class="view">
+      <div class="page-title-block anim-1">
+        <div class="page-eyebrow">Return</div>
+        <h1 class="page-title">Return a <em>Book</em></h1>
+        <p class="page-subtitle">Return borrowed books — fines apply for overdue returns</p>
+      </div>
+      <div class="two-col anim-2">
+        <div class="form-section">
+          <div class="form-section-title">
+            <span class="form-section-icon"><i class="bi bi-box-arrow-in-down" aria-hidden="true"></i></span>
+            Return Form
+          </div>
+          <div class="form-group">
+            <label class="form-label">Select Book to Return</label>
+            <select class="form-select" id="return-select" onchange="calcFine()">
+              <option value="">— Choose a borrowed book —</option>
+            </select>
+          </div>
+          <div id="return-fine-alert"></div>
+          <div class="form-group">
+            <label class="form-label">Return Date</label>
+            <input class="form-input" type="date" id="return-date" oninput="calcFine()"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Book Condition</label>
+            <select class="form-select">
+              <option>Good — No damage</option>
+              <option>Minor wear</option>
+              <option>Damaged — pages torn</option>
+              <option>Damaged — cover</option>
+            </select>
+          </div>
+          <div id="fine-summary" class="alert alert-warn" style="display:none">
+            <span class="alert-icon"><i class="bi bi-cash-coin" aria-hidden="true"></i></span>
+            <div id="fine-summary-text"></div>
+          </div>
+          <button type="button" class="btn btn-gold btn-full" onclick="submitReturn()">
+            Confirm Return <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </button>
+        </div>
+
+        <div class="card">
+          <div class="card-header"><span class="card-title">Active Borrows</span></div>
+          <div class="card-body">
+            <div id="return-borrows-list"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── HISTORY VIEW ───────────────────────────────────── -->
+    <div id="u-history" class="view">
+      <div class="page-title-block anim-1">
+        <div class="page-eyebrow">History</div>
+        <h1 class="page-title">Borrow <em>History</em></h1>
+        <p class="page-subtitle">Complete record of all your library transactions</p>
+      </div>
+      <div class="card anim-2">
+        <div class="card-body-flush tbl-wrap">
+          <table>
+            <thead><tr>
+              <th>#</th><th>Book Title</th><th>Author</th>
+              <th>Issued</th><th>Due</th><th>Returned</th><th>Fine</th><th>Status</th>
+            </tr></thead>
+            <tbody id="history-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── PROFILE VIEW ───────────────────────────────────── -->
+    <div id="u-profile" class="view">
+      <div class="page-title-block anim-1">
+        <div class="page-eyebrow">Account</div>
+        <h1 class="page-title">My <em>Profile</em></h1>
+      </div>
+      <div class="two-col anim-2">
+        <div class="form-section">
+          <div class="profile-avatar-wrap">
+            <div class="profile-avatar">J</div>
+            <div class="profile-name">Justo Kimani</div>
+            <div class="profile-sub">CS/2024/001 · Gold Member</div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Full Name</label>
+            <input class="form-input" value="Justo Kimani"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input class="form-input" type="email" value="justo@university.ac.ke"/>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Member Type</label>
+              <select class="form-select"><option>Student</option></select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Department</label>
+              <input class="form-input" value="Computer Science"/>
+            </div>
+          </div>
+          <button type="button" class="btn btn-gold btn-full" onclick="showToast('success','Profile updated successfully!')">
+            Update Profile
+          </button>
+        </div>
+
+        <div>
+          <div class="card">
+            <div class="card-header"><span class="card-title">Membership Details</span></div>
+            <div class="card-body">
+              <div class="membership-row">
+                <span class="membership-label">Member ID</span>
+                <span class="membership-value">CS/2024/001</span>
+              </div>
+              <div class="membership-row">
+                <span class="membership-label">Tier</span>
+                <span class="badge badge-gold">Gold</span>
+              </div>
+              <div class="membership-row">
+                <span class="membership-label">Joined</span>
+                <span class="membership-value">Jan 2024</span>
+              </div>
+              <div class="membership-row">
+                <span class="membership-label">Expires</span>
+                <span class="membership-value">Dec 2026</span>
+              </div>
+            </div>
+          </div>
+          <div class="card card-mt">
+            <div class="card-header"><span class="card-title">Change Password</span></div>
+            <div class="card-body">
+              <div class="form-group">
+                <label class="form-label">Current Password</label>
+                <input class="form-input" type="password" placeholder="••••••••"/>
+              </div>
+              <div class="form-group">
+                <label class="form-label">New Password</label>
+                <input class="form-input" type="password" placeholder="Min 8 characters"/>
+              </div>
+              <button type="button" class="btn btn-navy btn-full" onclick="showToast('success','Password updated!')">
+                Update Password
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /user-main -->
+</div><!-- /user-layout -->
+
+<div id="toast"></div>
+<script src="bridges-lms.js"></script>
+<script>
+  // ── View switching ──────────────────────────────────────
+  function switchView(id) {
+    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+
+    document.querySelectorAll('.sidebar-item').forEach(s => s.classList.remove('active'));
+    const sb = document.getElementById('usb-' + id.replace('u-',''));
+    if (sb) sb.classList.add('active');
+
+    document.querySelectorAll('.header-nav li').forEach(n => n.classList.remove('active'));
+    const hn = document.getElementById('unav-' + id.replace('u-',''));
+    if (hn) hn.classList.add('active');
+  }
+
+  // ── Init ────────────────────────────────────────────────
+  document.addEventListener('DOMContentLoaded', () => {
+    renderUserBorrows();
+    renderSearchResults();
+    renderHistory();
+    renderIssueBorrows();
+    setIssueDefaultDates();
+    renderReturnBorrows();
+    populateReturnSelect();
+    setReturnDefaultDate();
+  });
+
+  // ── Mobile nav & sidebar toggle ─────────────────────────
+  (function () {
+    // Inject hamburger button into header
+    const header = document.querySelector('.app-header');
+    if (!header) return;
+
+    const toggle = document.createElement('button');
+    toggle.className = 'mobile-nav-toggle';
+    toggle.setAttribute('aria-label', 'Open menu');
+    toggle.innerHTML = '<i class="bi bi-list"></i>';
+    header.prepend(toggle);
+
+    // Inject sidebar backdrop
+    const backdrop = document.createElement('div');
+    backdrop.className = 'sidebar-backdrop';
+    document.body.appendChild(backdrop);
+
+    const sidebar = document.querySelector('.sidebar');
+    const headerNav = document.querySelector('.header-nav');
+
+    function openMenu() {
+      if (sidebar)    sidebar.classList.add('open');
+      if (headerNav)  headerNav.classList.add('open');
+      backdrop.classList.add('open');
+      toggle.innerHTML = '<i class="bi bi-x-lg"></i>';
+    }
+    function closeMenu() {
+      if (sidebar)    sidebar.classList.remove('open');
+      if (headerNav)  headerNav.classList.remove('open');
+      backdrop.classList.remove('open');
+      toggle.innerHTML = '<i class="bi bi-list"></i>';
+    }
+
+    toggle.addEventListener('click', () =>
+      backdrop.classList.contains('open') ? closeMenu() : openMenu()
+    );
+    backdrop.addEventListener('click', closeMenu);
+
+    // Close drawer when a nav item is tapped
+    document.querySelectorAll('.sidebar-item, .header-nav li').forEach(el => {
+      el.addEventListener('click', closeMenu);
+    });
+  })();
+
+</script>
+</body>
+</html>

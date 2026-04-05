@@ -1,0 +1,746 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="bridges-lms.css">
+  <title>Admin — Bridges LMS</title>
+</head>
+<body>
+
+<!-- ── Header ────────────────────────────────────────────── -->
+<header class="app-header">
+  <a class="header-logo" href="#" onclick="switchView('a-dash')">
+     <img src="/assets/BRIDGESLOGO.png" alt="Bridges LMS Logo" class="header-logo-img" />
+    <div class="header-logo-text"><span>Admin</span></div>
+  </a>
+  <ul class="header-nav">
+    <li id="anav-dash" class="active" onclick="switchView('a-dash')"><i class="bi bi-speedometer2" aria-hidden="true"></i> Dashboard</li>
+    <li id="anav-books" onclick="switchView('a-books')"><i class="bi bi-book" aria-hidden="true"></i> Manage Books</li>
+    <li id="anav-students" onclick="switchView('a-students')"><i class="bi bi-people-fill" aria-hidden="true"></i> Members</li>
+    <li id="anav-issued" onclick="switchView('a-issued')"><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i> Issued Books</li>
+    <li id="anav-defaulters" onclick="switchView('a-defaulters')"><i class="bi bi-exclamation-triangle-fill" aria-hidden="true"></i> Defaulters</li>
+    <li id="anav-activities" onclick="switchView('a-activities')"><i class="bi bi-journal-text" aria-hidden="true"></i> Activities</li>
+  </ul>
+  <div class="header-right">
+    <div class="notif-btn" title="Notifications">
+      <i class="bi bi-bell-fill" aria-hidden="true"></i>
+      <span class="notif-badge">5</span>
+    </div>
+    <div class="header-user">
+      <div class="header-avatar">A</div>
+      <div>
+        <div class="header-uname">Admin User</div>
+        <div class="header-role">Librarian · Super Admin</div>
+      </div>
+    </div>
+    <a class="header-logout" href="index.html">Sign Out</a>
+  </div>
+</header>
+
+<!-- ── Portal Layout ─────────────────────────────────────── -->
+<div class="portal-layout">
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="sidebar-group-label">Overview</div>
+    <div class="sidebar-item active" id="asb-dash" onclick="switchView('a-dash')">
+      <span class="sidebar-icon"><i class="bi bi-speedometer2" aria-hidden="true"></i></span> Dashboard
+    </div>
+    <div class="sidebar-group-label">Library</div>
+    <div class="sidebar-item" id="asb-books" onclick="switchView('a-books')">
+      <span class="sidebar-icon"><i class="bi bi-book" aria-hidden="true"></i></span> Manage Books
+    </div>
+    <div class="sidebar-item" id="asb-students" onclick="switchView('a-students')">
+      <span class="sidebar-icon"><i class="bi bi-people-fill" aria-hidden="true"></i></span> Manage Members
+    </div>
+    <div class="sidebar-item" id="asb-issued" onclick="switchView('a-issued')">
+      <span class="sidebar-icon"><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></span> Issued Books
+      <span class="sidebar-badge">12</span>
+    </div>
+    <div class="sidebar-item" id="asb-defaulters" onclick="switchView('a-defaulters')">
+      <span class="sidebar-icon"><i class="bi bi-exclamation-triangle-fill" aria-hidden="true"></i></span> Defaulters
+      <span class="sidebar-badge sidebar-badge-red">3</span>
+    </div>
+    <div class="sidebar-group-label">Records</div>
+    <div class="sidebar-item" id="asb-activities" onclick="switchView('a-activities')">
+      <span class="sidebar-icon"><i class="bi bi-journal-text" aria-hidden="true"></i></span> Activity Log
+    </div>
+    <div class="sidebar-item" onclick="switchView('a-issue-admin')">
+      <span class="sidebar-icon"><i class="bi bi-plus-circle-fill" aria-hidden="true"></i></span> Issue Book (Admin)
+    </div>
+    <div class="sidebar-group-label">System</div>
+    <div class="sidebar-item" onclick="switchView('a-settings')">
+      <span class="sidebar-icon"><i class="bi bi-gear-fill" aria-hidden="true"></i></span> Settings
+    </div>
+    <div class="sidebar-item sidebar-signout" onclick="window.location.href='login.html'">
+      <span class="sidebar-icon"><i class="bi bi-box-arrow-right" aria-hidden="true"></i></span> Sign Out
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="portal-main">
+
+    <!-- ── DASHBOARD VIEW ────────────────────────────────── -->
+    <div id="a-dash" class="view active">
+      <div class="page-title-block anim-1">
+        <div class="page-eyebrow">Admin Dashboard</div>
+        <h1 class="page-title">Library <em>Overview</em></h1>
+        <p class="page-subtitle">Sunday, April 5 2026 — All systems operational</p>
+      </div>
+
+      <div class="kpi-grid anim-2">
+        <div class="kpi k-gold">
+          <div class="kpi-icon"><i class="bi bi-bookshelf" aria-hidden="true"></i></div>
+          <div class="kpi-val">10,240</div>
+          <div class="kpi-label">Total Books</div>
+          <div class="kpi-sub"><i class="bi bi-arrow-up-short" aria-hidden="true"></i> 48 added this month</div>
+        </div>
+        <div class="kpi k-green">
+          <div class="kpi-icon"><i class="bi bi-people-fill" aria-hidden="true"></i></div>
+          <div class="kpi-val">3,842</div>
+          <div class="kpi-label">Registered Members</div>
+          <div class="kpi-sub"><i class="bi bi-arrow-up-short" aria-hidden="true"></i> 24 new this week</div>
+        </div>
+        <div class="kpi k-blue">
+          <div class="kpi-icon"><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></div>
+          <div class="kpi-val">287</div>
+          <div class="kpi-label">Currently Issued</div>
+          <div class="kpi-sub">12 due today</div>
+        </div>
+        <div class="kpi k-red">
+          <div class="kpi-icon"><i class="bi bi-exclamation-octagon-fill" aria-hidden="true"></i></div>
+          <div class="kpi-val">3</div>
+          <div class="kpi-label">Defaulters</div>
+          <div class="kpi-sub warn">KES 1,240 in fines</div>
+        </div>
+      </div>
+
+      <div class="two-col anim-3">
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">Recent Transactions</span>
+            <button type="button" class="btn btn-outline btn-xs" onclick="switchView('a-activities')">View All</button>
+          </div>
+          <div class="card-body-flush tbl-wrap">
+            <table>
+              <thead><tr><th>Member</th><th>Book</th><th>Type</th><th>Date</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><div class="td-title">Justo Kimani</div><div class="td-sub">CS/2024/001</div></td>
+                  <td>Things Fall Apart</td>
+                  <td><span class="badge badge-gold">Issued</span></td>
+                  <td>Apr 4, 2026</td>
+                </tr>
+                <tr>
+                  <td><div class="td-title">Aisha Omar</div><div class="td-sub">BS/2023/047</div></td>
+                  <td>Americanah</td>
+                  <td><span class="badge badge-green">Returned</span></td>
+                  <td>Apr 4, 2026</td>
+                </tr>
+                <tr>
+                  <td><div class="td-title">David Mwangi</div><div class="td-sub">EE/2025/012</div></td>
+                  <td>Clean Code</td>
+                  <td><span class="badge badge-gold">Issued</span></td>
+                  <td>Apr 3, 2026</td>
+                </tr>
+                <tr>
+                  <td><div class="td-title">Fatima Hassan</div><div class="td-sub">LA/2024/089</div></td>
+                  <td>Half of a Yellow Sun</td>
+                  <td><span class="badge badge-red">Overdue</span></td>
+                  <td>Apr 2, 2026</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"><span class="card-title">Top Borrowed Books</span></div>
+          <div class="card-body">
+            <div class="top-book-row">
+              <div class="top-book-rank top-book-rank-gold">1</div>
+              <div class="top-book-inner">
+                <div class="top-book-title">Things Fall Apart</div>
+                <div class="prog-wrap"><div class="prog-fill" style="width:88%"></div></div>
+              </div>
+              <div class="top-book-count">88</div>
+            </div>
+            <div class="top-book-row">
+              <div class="top-book-rank">2</div>
+              <div class="top-book-inner">
+                <div class="top-book-title">Atomic Habits</div>
+                <div class="prog-wrap"><div class="prog-fill" style="width:72%"></div></div>
+              </div>
+              <div class="top-book-count">72</div>
+            </div>
+            <div class="top-book-row">
+              <div class="top-book-rank">3</div>
+              <div class="top-book-inner">
+                <div class="top-book-title">Americanah</div>
+                <div class="prog-wrap"><div class="prog-fill" style="width:65%"></div></div>
+              </div>
+              <div class="top-book-count">65</div>
+            </div>
+            <div class="top-book-row">
+              <div class="top-book-rank">4</div>
+              <div class="top-book-inner">
+                <div class="top-book-title">Clean Code</div>
+                <div class="prog-wrap"><div class="prog-fill" style="width:50%"></div></div>
+              </div>
+              <div class="top-book-count">50</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card anim-4">
+        <div class="card-header">
+          <span class="card-title">
+            <i class="bi bi-exclamation-triangle-fill" aria-hidden="true"></i> Defaulter Alerts
+          </span>
+          <button type="button" class="btn btn-danger btn-xs" onclick="switchView('a-defaulters')">View All</button>
+        </div>
+        <div class="card-body-flush tbl-wrap">
+          <table>
+            <thead><tr><th>Member</th><th>Book</th><th>Due Date</th><th>Days Overdue</th><th>Fine</th><th>Action</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><div class="td-title">Fatima Hassan</div><div class="td-sub">LA/2024/089</div></td>
+                <td>Half of a Yellow Sun</td>
+                <td class="td-overdue">Mar 22, 2026</td>
+                <td><span class="badge badge-red">14 days</span></td>
+                <td><span class="fine-amount">KES 140</span></td>
+                <td><button type="button" class="btn btn-outline btn-xs" onclick="showToast('warn','Reminder sent to Fatima Hassan')">
+                  <i class="bi bi-envelope-fill" aria-hidden="true"></i> Send Reminder
+                </button></td>
+              </tr>
+              <tr>
+                <td><div class="td-title">Brian Oduya</div><div class="td-sub">SW/2025/033</div></td>
+                <td>Weep Not, Child</td>
+                <td class="td-overdue">Mar 28, 2026</td>
+                <td><span class="badge badge-red">8 days</span></td>
+                <td><span class="fine-amount">KES 80</span></td>
+                <td><button type="button" class="btn btn-outline btn-xs" onclick="showToast('warn','Reminder sent to Brian Oduya')">
+                  <i class="bi bi-envelope-fill" aria-hidden="true"></i> Send Reminder
+                </button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── MANAGE BOOKS VIEW ──────────────────────────────── -->
+    <div id="a-books" class="view">
+      <div class="page-title-block anim-1">
+        <div class="page-eyebrow">Catalog Management</div>
+        <h1 class="page-title">Manage <em>Books</em></h1>
+        <p class="page-subtitle">Add, edit, or remove books from the library catalog</p>
+      </div>
+
+      <div class="page-tabs anim-2">
+        <button type="button" class="page-tab active" onclick="switchBookTab('books-list')">
+          <i class="bi bi-list-ul" aria-hidden="true"></i> All Books
+        </button>
+        <button type="button" class="page-tab" onclick="switchBookTab('books-add')">
+          <i class="bi bi-plus-lg" aria-hidden="true"></i> Add Book
+        </button>
+      </div>
+
+      <div id="books-list">
+        <div class="search-row anim-3">
+          <div class="search-input-wrap">
+            <span class="search-icon"><i class="bi bi-search" aria-hidden="true"></i></span>
+            <input type="text" id="admin-book-search" placeholder="Search books…" oninput="renderAdminBooks()"/>
+          </div>
+          <select class="filter-sel" onchange="renderAdminBooks()" id="admin-genre-filter">
+            <option value="">All Genres</option>
+            <option>Literature</option><option>African Studies</option>
+            <option>Technology</option><option>Business</option><option>History</option>
+          </select>
+          <button type="button" class="btn btn-gold" onclick="switchBookTab('books-add')">+ Add New Book</button>
+        </div>
+        <div class="card anim-3">
+          <div class="card-body-flush tbl-wrap">
+            <table>
+              <thead><tr>
+                <th>ID</th><th>Title</th><th>Author</th><th>Genre</th>
+                <th>Copies</th><th>Available</th><th>Status</th><th>Actions</th>
+              </tr></thead>
+              <tbody id="admin-books-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div id="books-add" style="display:none">
+        <div class="form-section anim-3">
+          <div class="form-section-title">
+            <span class="form-section-icon"><i class="bi bi-book-half" aria-hidden="true"></i></span> Add New Book
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">Book Title</label>
+              <input class="form-input" placeholder="Full title"/></div>
+            <div class="form-group"><label class="form-label">Author(s)</label>
+              <input class="form-input" placeholder="Author name(s)"/></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">ISBN</label>
+              <input class="form-input" placeholder="978-…"/></div>
+            <div class="form-group"><label class="form-label">Genre</label>
+              <select class="form-select">
+                <option>Literature</option><option>Science</option><option>Technology</option>
+                <option>African Studies</option><option>Business</option><option>History</option><option>Philosophy</option>
+              </select></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">Publisher</label>
+              <input class="form-input" placeholder="Publisher name"/></div>
+            <div class="form-group"><label class="form-label">Year Published</label>
+              <input class="form-input" type="number" placeholder="e.g. 2020"/></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">Number of Copies</label>
+              <input class="form-input" type="number" placeholder="e.g. 5"/></div>
+            <div class="form-group"><label class="form-label">Location / Shelf</label>
+              <input class="form-input" placeholder="e.g. Shelf A3"/></div>
+          </div>
+          <div class="form-group"><label class="form-label">Description</label>
+            <textarea class="form-textarea" placeholder="Brief synopsis or notes…"></textarea></div>
+          <div class="btn-row">
+            <button type="button" class="btn btn-gold"
+              onclick="showToast('success','Book added to catalog!');switchBookTab('books-list')">Add Book</button>
+            <button type="button" class="btn btn-outline" onclick="switchBookTab('books-list')">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── MANAGE MEMBERS VIEW ───────────────────────────── -->
+    <div id="a-students" class="view">
+      <div class="page-title-block anim-1">
+        <div class="page-eyebrow">Member Management</div>
+        <h1 class="page-title">Manage <em>Members</em></h1>
+        <p class="page-subtitle">View, edit, and manage registered library members</p>
+      </div>
+
+      <div class="page-tabs anim-2">
+        <button type="button" class="page-tab active" onclick="switchStudentTab('stud-list')">
+          <i class="bi bi-people-fill" aria-hidden="true"></i> All Members
+        </button>
+        <button type="button" class="page-tab" onclick="switchStudentTab('stud-add')">
+          <i class="bi bi-person-plus-fill" aria-hidden="true"></i> Add Member
+        </button>
+      </div>
+
+      <div id="stud-list">
+        <div class="search-row anim-3">
+          <div class="search-input-wrap">
+            <span class="search-icon"><i class="bi bi-search" aria-hidden="true"></i></span>
+            <input type="text" placeholder="Search members…" oninput="renderStudents(this.value)"/>
+          </div>
+          <select class="filter-sel">
+            <option value="">All Types</option>
+            <option>Student</option><option>Teacher</option><option>Staff</option>
+          </select>
+          <select class="filter-sel">
+            <option value="">All Status</option>
+            <option>Active</option><option>Suspended</option>
+          </select>
+          <button type="button" class="btn btn-gold" onclick="switchStudentTab('stud-add')">+ Add Member</button>
+        </div>
+        <div class="card anim-3">
+          <div class="card-body-flush tbl-wrap">
+            <table>
+              <thead><tr>
+                <th>ID</th><th>Name</th><th>Type</th><th>Department</th>
+                <th>Borrowed</th><th>Fines</th><th>Status</th><th>Actions</th>
+              </tr></thead>
+              <tbody id="students-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div id="stud-add" style="display:none">
+        <div class="form-section anim-3">
+          <div class="form-section-title">
+            <span class="form-section-icon"><i class="bi bi-person-fill" aria-hidden="true"></i></span> Register New Member
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">First Name</label>
+              <input class="form-input" placeholder="First name"/></div>
+            <div class="form-group"><label class="form-label">Last Name</label>
+              <input class="form-input" placeholder="Last name"/></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">Email</label>
+              <input class="form-input" type="email" placeholder="email@domain.com"/></div>
+            <div class="form-group"><label class="form-label">Phone</label>
+              <input class="form-input" placeholder="+254…"/></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">Member ID</label>
+              <input class="form-input" placeholder="e.g. CS/2026/001"/></div>
+            <div class="form-group"><label class="form-label">Member Type</label>
+              <select class="form-select"><option>Student</option><option>Teacher</option><option>Staff</option></select></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">Department</label>
+              <input class="form-input" placeholder="e.g. Computer Science"/></div>
+            <div class="form-group"><label class="form-label">Membership Tier</label>
+              <select class="form-select"><option>Standard</option><option>Gold</option><option>Premium</option></select></div>
+          </div>
+          <div class="btn-row">
+            <button type="button" class="btn btn-gold"
+              onclick="showToast('success','Member registered successfully!');switchStudentTab('stud-list')">Register Member</button>
+            <button type="button" class="btn btn-outline" onclick="switchStudentTab('stud-list')">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── ISSUED BOOKS VIEW ──────────────────────────────── -->
+    <div id="a-issued" class="view">
+      <div class="page-title-block anim-1">
+        <div class="page-eyebrow">Circulation</div>
+        <h1 class="page-title">Issued <em>Books</em></h1>
+        <p class="page-subtitle">All currently issued books and their status</p>
+      </div>
+
+      <div class="kpi-grid-3 anim-2">
+        <div class="kpi k-gold kpi-sm">
+          <div class="kpi-icon kpi-icon-sm"><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></div>
+          <div class="kpi-val kpi-val-sm">287</div>
+          <div class="kpi-label">Total Issued</div>
+        </div>
+        <div class="kpi k-red kpi-sm">
+          <div class="kpi-icon kpi-icon-sm"><i class="bi bi-alarm-fill" aria-hidden="true"></i></div>
+          <div class="kpi-val kpi-val-sm">12</div>
+          <div class="kpi-label">Due Today</div>
+        </div>
+        <div class="kpi k-green kpi-sm">
+          <div class="kpi-icon kpi-icon-sm"><i class="bi bi-check-circle-fill" aria-hidden="true"></i></div>
+          <div class="kpi-val kpi-val-sm">43</div>
+          <div class="kpi-label">Returned This Week</div>
+        </div>
+      </div>
+
+      <div class="search-row anim-3">
+        <div class="search-input-wrap">
+          <span class="search-icon"><i class="bi bi-search" aria-hidden="true"></i></span>
+          <input type="text" id="issued-search" placeholder="Search by member or book…" oninput="renderIssuedBooks()"/>
+        </div>
+        <select class="filter-sel" id="issued-status-filter" onchange="renderIssuedBooks()">
+          <option value="">All Status</option>
+          <option value="active">Active</option>
+          <option value="overdue">Overdue</option>
+          <option value="returned">Returned</option>
+        </select>
+      </div>
+
+      <div class="card anim-3">
+        <div class="card-body-flush tbl-wrap">
+          <table>
+            <thead><tr><th>#</th><th>Member</th><th>Book Title</th><th>Issued Date</th><th>Due Date</th><th>Status</th><th>Fine</th><th>Action</th></tr></thead>
+            <tbody id="issued-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── DEFAULTERS VIEW ────────────────────────────────── -->
+    <div id="a-defaulters" class="view">
+      <div class="page-title-block anim-1">
+        <div class="page-eyebrow">Overdue Management</div>
+        <h1 class="page-title">Defaulter <em>List</em></h1>
+        <p class="page-subtitle">Students who have not returned books by the deadline</p>
+      </div>
+
+      <div class="alert alert-danger anim-2">
+        <span class="alert-icon"><i class="bi bi-exclamation-octagon-fill" aria-hidden="true"></i></span>
+        <div><strong>3 active defaulters</strong> with a combined fine of <strong>KES 1,240</strong>. Send bulk reminders or escalate to department heads.</div>
+      </div>
+
+      <div class="search-row anim-2">
+        <div class="search-input-wrap">
+          <span class="search-icon"><i class="bi bi-search" aria-hidden="true"></i></span>
+          <input type="text" placeholder="Search defaulters…"/>
+        </div>
+        <button type="button" class="btn btn-danger" onclick="showToast('warn','Bulk reminders sent to all 3 defaulters!')">
+          <i class="bi bi-envelope-fill" aria-hidden="true"></i> Send Bulk Reminders
+        </button>
+        <button type="button" class="btn btn-outline" onclick="showToast('success','Report exported!')">
+          <i class="bi bi-download" aria-hidden="true"></i> Export Report
+        </button>
+      </div>
+
+      <div class="card anim-3">
+        <div class="card-body-flush tbl-wrap">
+          <table>
+            <thead><tr>
+              <th>Member</th><th>Dept.</th><th>Book</th><th>Issue Date</th>
+              <th>Due Date</th><th>Days Overdue</th><th>Fine</th><th>Actions</th>
+            </tr></thead>
+            <tbody id="defaulters-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── ACTIVITIES VIEW ────────────────────────────────── -->
+    <div id="a-activities" class="view">
+      <div class="page-title-block anim-1">
+        <div class="page-eyebrow">Audit Log</div>
+        <h1 class="page-title">Library <em>Activities</em></h1>
+        <p class="page-subtitle">Complete log of all library transactions and system events</p>
+      </div>
+
+      <div class="two-col anim-2">
+        <div class="form-section">
+          <div class="form-section-title">
+            <span class="form-section-icon"><i class="bi bi-journal-text" aria-hidden="true"></i></span> Record New Activity
+          </div>
+          <div class="form-group">
+            <label class="form-label">Activity Type</label>
+            <select class="form-select" id="act-type">
+              <option>Book Issued</option><option>Book Returned</option>
+              <option>Book Not Available</option><option>Fine Collected</option>
+              <option>Member Registered</option><option>Book Added to Catalog</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Member ID</label>
+            <input class="form-input" id="act-member" placeholder="Member ID or name"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Book ID / Title</label>
+            <input class="form-input" id="act-book" placeholder="Book reference"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Notes</label>
+            <textarea class="form-textarea form-textarea-short" id="act-notes" placeholder="Additional details…"></textarea>
+          </div>
+          <button type="button" class="btn btn-gold btn-full" onclick="recordActivity()">Record Activity</button>
+        </div>
+
+        <div class="card">
+          <div class="card-header"><span class="card-title">Quick Stats — Today</span></div>
+          <div class="card-body">
+            <div class="stat-box stat-box-gold">
+              <span class="stat-box-label"><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i> Books Issued</span>
+              <span class="stat-box-num stat-box-num-gold">18</span>
+            </div>
+            <div class="stat-box stat-box-green">
+              <span class="stat-box-label"><i class="bi bi-box-arrow-in-down" aria-hidden="true"></i> Books Returned</span>
+              <span class="stat-box-num stat-box-num-green">12</span>
+            </div>
+            <div class="stat-box stat-box-red">
+              <span class="stat-box-label"><i class="bi bi-exclamation-triangle-fill" aria-hidden="true"></i> Overdue Alerts</span>
+              <span class="stat-box-num stat-box-num-red">3</span>
+            </div>
+            <div class="stat-box stat-box-blue">
+              <span class="stat-box-label"><i class="bi bi-person-plus-fill" aria-hidden="true"></i> New Members</span>
+              <span class="stat-box-num stat-box-num-blue">4</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card anim-3">
+        <div class="card-header">
+          <span class="card-title">Transaction Log</span>
+          <button type="button" class="btn btn-outline btn-xs" onclick="showToast('success','Log exported!')">
+            <i class="bi bi-download" aria-hidden="true"></i> Export CSV
+          </button>
+        </div>
+        <div class="card-body-flush tbl-wrap">
+          <table>
+            <thead><tr><th>#</th><th>Time</th><th>Activity</th><th>Member</th><th>Book</th><th>Librarian</th></tr></thead>
+            <tbody id="activities-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── ISSUE BOOK (ADMIN) VIEW ────────────────────────── -->
+    <div id="a-issue-admin" class="view">
+      <div class="page-title-block anim-1">
+        <div class="page-eyebrow">Circulation</div>
+        <h1 class="page-title">Issue Book <em>(Admin)</em></h1>
+        <p class="page-subtitle">Manually process a book issue on behalf of a member</p>
+      </div>
+      <div class="two-col anim-2">
+        <div class="form-section">
+          <div class="form-section-title">
+            <span class="form-section-icon"><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></span> Issue Book Form
+          </div>
+          <div class="form-group">
+            <label class="form-label">Member ID</label>
+            <input class="form-input" placeholder="e.g. CS/2024/001" id="ai-member"/>
+          </div>
+          <div id="ai-member-preview" class="alert alert-success" style="display:none">
+            <span class="alert-icon"><i class="bi bi-check-circle-fill" aria-hidden="true"></i></span>
+            <div id="ai-member-preview-text">Member found</div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Book ID / ISBN</label>
+            <input class="form-input" placeholder="Book ID or ISBN" id="ai-book"
+              oninput="lookupBook('ai-book','ai-book-preview')"/>
+          </div>
+          <div id="ai-book-preview" class="alert alert-success" style="display:none">
+            <span class="alert-icon"><i class="bi bi-check-circle-fill" aria-hidden="true"></i></span>
+            <div id="ai-book-preview-text"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">Issue Date</label>
+              <input class="form-input" type="date" id="ai-issue-date"/></div>
+            <div class="form-group"><label class="form-label">Due Date</label>
+              <input class="form-input" type="date" id="ai-due-date"/></div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Librarian Notes</label>
+            <textarea class="form-textarea form-textarea-medium" placeholder="Any special notes…"></textarea>
+          </div>
+          <button type="button" class="btn btn-gold btn-full" onclick="adminIssueBook()">Issue Book</button>
+        </div>
+
+        <div class="card">
+          <div class="card-header"><span class="card-title">Lookup Member</span></div>
+          <div class="card-body">
+            <div class="form-group">
+              <input class="form-input" placeholder="Enter member ID to preview…" oninput="previewMember(this.value)"/>
+            </div>
+            <div id="member-lookup-result">
+              <div class="empty-state empty-state-sm">
+                <div class="e-icon"><i class="bi bi-person" aria-hidden="true"></i></div>
+                <div class="e-sub">Enter a Member ID to view details</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SETTINGS VIEW ──────────────────────────────────── -->
+    <div id="a-settings" class="view">
+      <div class="page-title-block anim-1">
+        <div class="page-eyebrow">System</div>
+        <h1 class="page-title">Library <em>Settings</em></h1>
+      </div>
+      <div class="two-col anim-2">
+        <div class="form-section">
+          <div class="form-section-title">
+            <span class="form-section-icon"><i class="bi bi-gear-fill" aria-hidden="true"></i></span> General Settings
+          </div>
+          <div class="form-group"><label class="form-label">Library Name</label>
+            <input class="form-input" value="Bridges Library — University of Eldoret"/></div>
+          <div class="form-group"><label class="form-label">Max Books Per Member</label>
+            <input class="form-input" type="number" value="3"/></div>
+          <div class="form-group"><label class="form-label">Standard Loan Period (days)</label>
+            <input class="form-input" type="number" value="14"/></div>
+          <div class="form-group"><label class="form-label">Fine Per Day (KES)</label>
+            <input class="form-input" type="number" value="10"/></div>
+          <button type="button" class="btn btn-gold btn-full" onclick="showToast('success','Settings saved!')">Save Settings</button>
+        </div>
+
+        <div class="form-section">
+          <div class="form-section-title">
+            <span class="form-section-icon"><i class="bi bi-shield-lock-fill" aria-hidden="true"></i></span> Admin Account
+          </div>
+          <div class="form-group"><label class="form-label">Admin Name</label>
+            <input class="form-input" value="Admin User"/></div>
+          <div class="form-group"><label class="form-label">Email</label>
+            <input class="form-input" value="admin@library.ac.ke"/></div>
+          <div class="form-group"><label class="form-label">New Password</label>
+            <input class="form-input" type="password" placeholder="Leave blank to keep current"/></div>
+          <button type="button" class="btn btn-navy btn-full" onclick="showToast('success','Account updated!')">Update Account</button>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /portal-main -->
+</div><!-- /portal-layout -->
+
+<div id="toast"></div>
+<script src="bridges-lms.js"></script>
+<script>
+  // ── View switching ──────────────────────────────────────
+  function switchView(id) {
+    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+
+    document.querySelectorAll('.sidebar-item').forEach(s => s.classList.remove('active'));
+    const sb = document.getElementById('asb-' + id.replace('a-',''));
+    if (sb) sb.classList.add('active');
+
+    document.querySelectorAll('.header-nav li').forEach(n => n.classList.remove('active'));
+    const hn = document.getElementById('anav-' + id.replace('a-',''));
+    if (hn) hn.classList.add('active');
+
+    if (id === 'a-issued') renderIssuedBooks();
+    if (id === 'a-defaulters') renderDefaulters();
+    if (id === 'a-activities') renderActivities();
+  }
+
+  // ── Init ────────────────────────────────────────────────
+  document.addEventListener('DOMContentLoaded', () => {
+    renderAdminBooks();
+    renderStudents('');
+    renderIssuedBooks();
+    renderDefaulters();
+    renderActivities();
+    setAdminIssueDates();
+  });
+
+  // ── Mobile nav & sidebar toggle ─────────────────────────
+  (function () {
+    // Inject hamburger button into header
+    const header = document.querySelector('.app-header');
+    if (!header) return;
+
+    const toggle = document.createElement('button');
+    toggle.className = 'mobile-nav-toggle';
+    toggle.setAttribute('aria-label', 'Open menu');
+    toggle.innerHTML = '<i class="bi bi-list"></i>';
+    header.prepend(toggle);
+
+    // Inject sidebar backdrop
+    const backdrop = document.createElement('div');
+    backdrop.className = 'sidebar-backdrop';
+    document.body.appendChild(backdrop);
+
+    const sidebar = document.querySelector('.sidebar');
+    const headerNav = document.querySelector('.header-nav');
+
+    function openMenu() {
+      if (sidebar)    sidebar.classList.add('open');
+      if (headerNav)  headerNav.classList.add('open');
+      backdrop.classList.add('open');
+      toggle.innerHTML = '<i class="bi bi-x-lg"></i>';
+    }
+    function closeMenu() {
+      if (sidebar)    sidebar.classList.remove('open');
+      if (headerNav)  headerNav.classList.remove('open');
+      backdrop.classList.remove('open');
+      toggle.innerHTML = '<i class="bi bi-list"></i>';
+    }
+
+    toggle.addEventListener('click', () =>
+      backdrop.classList.contains('open') ? closeMenu() : openMenu()
+    );
+    backdrop.addEventListener('click', closeMenu);
+
+    // Close drawer when a nav item is tapped
+    document.querySelectorAll('.sidebar-item, .header-nav li').forEach(el => {
+      el.addEventListener('click', closeMenu);
+    });
+  })();
+
+</script>
+</body>
+</html>
