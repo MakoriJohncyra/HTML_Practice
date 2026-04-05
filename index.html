@@ -3,618 +3,145 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Roboto:wght@300;400;500;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lato:wght@300;400;700;900&display=swap"
     rel="stylesheet">
-  <title>Bridges Library Management System</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="bridges-lms.css">
+  <title>Sign In — Bridges LMS</title>
 </head>
 
 <body>
-  <header>
-    <nav>
-      <a href="#" class="logo">
-        <div class="logo-icon">
-          <img src="assets/BRIDGESLOGO.png" alt="Bridges LMS Logo">
-        </div>
-      </a>
-      <ul class="nav-links">
-        <li><a href="#catalog" class="active">Catalog</a></li>
-        <li><a href="#features">Features</a></li>
-        <li><a href="#how-it-works">How It Works</a></li>
-        <li><a href="#about">About Us</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <div class="nav-btns">
-        <a href="login.html" class="btn-login">Login</a>
-        <a href="signup.html" class="btn-signup">Sign Up</a>
-      </div>
-    </nav>
-  </header>
 
-  <section class="hero">
-    <div class="hero-content">
-      <h1>Bridges<br /><em>Library</em><br />Software</h1>
-      <p class="hero-subtitle">Every book. Every reader. Every bridge.</p>
-      <p>
-        Bridges is a fully featured, scalable library management system built for
-        African institutions. Connecting readers, knowledge seekers, and communities
-        to the resources that matter most.
+  <div class="auth-page">
+
+    <!-- Left Panel -->
+    <div class="auth-left anim-1">
+      <div class="auth-logo">
+        <img src="assets/BRIDGESLOGO.png" alt="Bridges LMS Logo" class="auth-logo-img" />
+        <div class="auth-logo-text">Bridges <span>LMS</span></div>
+      </div>
+      <h1 class="auth-tagline">
+        Africa's<br /><em>Knowledge</em><br />Bridge
+      </h1>
+      <p class="auth-tagline-sub">
+        A fully featured library management system connecting students, teachers,
+        and librarians to the resources that matter most.
       </p>
-      <div class="hero-cta">
-        <button class="btn-primary"><span>Explore Catalog</span></button>
-        <a href="#features" class="btn-ghost">Learn more</a>
+      <div class="auth-stats">
+        <div class="auth-stat">
+          <div class="num">10K+</div>
+          <div class="lbl">Books</div>
+        </div>
+        <div class="auth-stat">
+          <div class="num">3,800</div>
+          <div class="lbl">Members</div>
+        </div>
+        <div class="auth-stat">
+          <div class="num">24</div>
+          <div class="lbl">Genres</div>
+        </div>
       </div>
     </div>
 
-    <div class="hero-visual">
-      <!-- Gradient placeholder – swap src for your photo -->
-      <div style="position:absolute;inset:0;background:linear-gradient(135deg,#1a3a6e 0%,#0f1f3d 50%,#162240 100%)">
-      </div>
-      <!-- Decorative books icon -->
-      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0.12">
-        <img src="./assets/BridgesLibraryPhoto1.jpg" alt="Bridges Library Photo" />
-      </div>
-      <div class="hero-badge">
-        <div class="num">10K+</div>
-        <div class="lbl">Books Available</div>
-      </div>
-    </div>
-  </section>
+    <!-- Right Panel -->
+    <div class="auth-right">
+      <div class="auth-box anim-2">
 
+        <div class="auth-tabs">
+          <a class="auth-tab active" href="login.html">Sign In</a>
+          <a class="auth-tab" href="register.html">Register</a>
+        </div>
 
-  <div class="stats-band">
-    <div class="stat-item">
-      <div class="stat-num">10,000+</div>
-      <div class="stat-label">Books in Catalog</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">3,200+</div>
-      <div class="stat-label">Active Members</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">98%</div>
-      <div class="stat-label">Satisfaction Rate</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">24/7</div>
-      <div class="stat-label">Online Access</div>
+        <h2 class="auth-form-title">Welcome back</h2>
+        <p class="auth-form-sub">Sign in to your Bridges account to continue</p>
+
+        <div class="role-selector" id="login-role-sel">
+          <div class="role-card selected" onclick="selectLoginRole(this,'user')" data-role="user">
+            <div class="role-icon"><i class="bi bi-mortarboard" aria-hidden="true"></i></div>
+            <div class="role-name">Student / Staff</div>
+            <div class="role-desc">Library member access</div>
+          </div>
+          <div class="role-card" onclick="selectLoginRole(this,'admin')" data-role="admin">
+            <div class="role-icon"><i class="bi bi-bookshelf" aria-hidden="true"></i></div>
+            <div class="role-name">Librarian / Admin</div>
+            <div class="role-desc">Full system access</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Email / Member ID</label>
+          <input id="login-email" class="form-input" type="text" placeholder="Enter your email or ID" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Password</label>
+          <input id="login-pass" class="form-input" type="password" placeholder="Enter your password" />
+        </div>
+
+        <div class="form-inline-row">
+          <label class="form-remember">
+            <input type="checkbox" /> Remember me
+          </label>
+          <a class="form-forgot" href="#">Forgot password?</a>
+        </div>
+
+        <button type="button" class="btn btn-gold btn-full" onclick="doLogin()">
+          Sign In <i class="bi bi-arrow-right" aria-hidden="true"></i>
+        </button>
+
+        <p class="auth-switch">
+          Don't have an account? <a href="register.html">Register here</a>
+        </p>
+
+        <div class="auth-divider">Demo credentials</div>
+
+        <div class="btn-demo-grid">
+          <button type="button" class="btn btn-outline btn-sm btn-full btn-demo" onclick="quickLogin('user')">
+            <i class="bi bi-person-fill" aria-hidden="true"></i> User: demo / 123
+          </button>
+          <button type="button" class="btn btn-outline btn-sm btn-full btn-demo" onclick="quickLogin('admin')">
+            <i class="bi bi-shield-lock-fill" aria-hidden="true"></i> Admin: admin / 123
+          </button>
+        </div>
+
+      </div>
     </div>
   </div>
 
+  <div id="toast"></div>
+  <script src="bridges-lms.js"></script>
+  <script>
+    // Page-specific: login logic
+    let loginRole = 'user';
 
-  <section class="features" id="features">
-    <div class="section-head fade-in">
-      <div class="section-eyebrow">What We Offer</div>
-      <h2>Everything a modern library <em>needs</em></h2>
-      <p>A complete suite of tools to manage, discover, and connect readers with knowledge.</p>
-    </div>
-    <div class="features-grid">
-      <div class="feature-card fade-in">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M21 21l-6-6m2-5a7 7 0 1 1-14 0 7 7 0 0 1 14 0z" stroke-width="2" stroke-linecap="round" />
-          </svg>
-        </div>
-        <h3>Smart Catalog Search</h3>
-        <p>Find any book in seconds with our intelligent full-text search, filters by genre, author, availability, and
-          publication year.</p>
-      </div>
-      <div class="feature-card fade-in">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" stroke-width="2"
-              stroke-linecap="round" />
-            <rect x="8" y="2" width="8" height="4" rx="1" ry="1" stroke-width="2" />
-          </svg>
-        </div>
-        <h3>Borrowing & Returns</h3>
-        <p>Streamlined checkout and return workflows, automated due-date reminders, and flexible fine management for
-          members.</p>
-      </div>
-      <div class="feature-card fade-in">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke-width="2" stroke-linecap="round" />
-            <circle cx="9" cy="7" r="4" stroke-width="2" />
-            <path d="M23 21v-2a4 4 0 0 0-3-3.87" stroke-width="2" stroke-linecap="round" />
-            <path d="M16 3.13a4 4 0 0 1 0 7.75" stroke-width="2" stroke-linecap="round" />
-          </svg>
-        </div>
-        <h3>Member Management</h3>
-        <p>Register, track, and manage all your library members from a single dashboard with full borrowing history and
-          analytics.</p>
-      </div>
-      <div class="feature-card fade-in">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <line x1="18" y1="20" x2="18" y2="10" stroke-width="2" stroke-linecap="round" />
-            <line x1="12" y1="20" x2="12" y2="4" stroke-width="2" stroke-linecap="round" />
-            <line x1="6" y1="20" x2="6" y2="14" stroke-width="2" stroke-linecap="round" />
-          </svg>
-        </div>
-        <h3>Reports & Analytics</h3>
-        <p>Deep insights into borrowing trends, popular genres, member activity, and inventory health — all in real-time
-          dashboards.</p>
-      </div>
-      <div class="feature-card fade-in">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M18 8h1a4 4 0 0 1 0 8h-1" stroke-width="2" stroke-linecap="round" />
-            <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z" stroke-width="2" />
-            <line x1="6" y1="1" x2="6" y2="4" stroke-width="2" stroke-linecap="round" />
-            <line x1="10" y1="1" x2="10" y2="4" stroke-width="2" stroke-linecap="round" />
-            <line x1="14" y1="1" x2="14" y2="4" stroke-width="2" stroke-linecap="round" />
-          </svg>
-        </div>
-        <h3>Digital Resources</h3>
-        <p>Host and manage eBooks, PDFs, and digital content alongside physical collections in a unified catalogue
-          interface.</p>
-      </div>
-      <div class="feature-card fade-in">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.45 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"
-              stroke-width="2" />
-          </svg>
-        </div>
-        <h3>Notifications & Alerts</h3>
-        <p>SMS and email notifications for due dates, new arrivals, reservations, and overdue items keep everyone
-          informed.</p>
-      </div>
-    </div>
-  </section>
+    function selectLoginRole(el, role) {
+      loginRole = role;
+      document.querySelectorAll('#login-role-sel .role-card').forEach(c => c.classList.remove('selected'));
+      el.classList.add('selected');
+    }
 
-  <section class="catalog" id="catalog">
-    <div class="section-head fade-in">
-      <div class="section-eyebrow">Browse Collection</div>
-      <h2>Featured <em>Books</em></h2>
-      <p>Discover curated picks from our growing catalog spanning literature, science, history, and more.</p>
-    </div>
+    function quickLogin(role) {
+      loginRole = role;
+      if (role === 'admin') {
+        document.querySelectorAll('#login-role-sel .role-card').forEach(c => c.classList.remove('selected'));
+        document.querySelector('[data-role="admin"]').classList.add('selected');
+      }
+      doLogin();
+    }
 
-    <div class="search-wrap fade-in">
-      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="11" cy="11" r="8" stroke-width="2" />
-        <line x1="21" y1="21" x2="16.65" y2="16.65" stroke-width="2" stroke-linecap="round" />
-      </svg>
-      <input type="text" placeholder="Search by title, author, or ISBN…" />
-    </div>
-
-    <div class="catalog-filters fade-in">
-      <button class="filter-btn active" onclick="setFilter(this)">All</button>
-      <button class="filter-btn" onclick="setFilter(this)">Fiction</button>
-      <button class="filter-btn" onclick="setFilter(this)">Non-Fiction</button>
-      <button class="filter-btn" onclick="setFilter(this)">Science</button>
-      <button class="filter-btn" onclick="setFilter(this)">History</button>
-      <button class="filter-btn" onclick="setFilter(this)">Technology</button>
-      <button class="filter-btn" onclick="setFilter(this)">Biography</button>
-    </div>
-
-    <div class="books-grid">
-
-      <div class="book-card fade-in">
-        <div class="book-cover" style="background:linear-gradient(135deg,#1a3a6e,#0f1f3d)">
-          <div class="book-cover-bg">
-            <svg viewBox="0 0 24 24" fill="white">
-              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
-            </svg>
-          </div>
-          <span class="book-badge">Available</span>
-        </div>
-        <div class="book-body">
-          <div class="book-genre">Fiction</div>
-          <div class="book-title">Things Fall Apart</div>
-          <div class="book-author">Chinua Achebe</div>
-          <div class="book-footer">
-            <div class="book-avail">
-              <div class="dot green"></div>
-              <span class="avail-text green">3 copies</span>
-            </div>
-            <button class="book-borrow">Borrow</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="book-card fade-in">
-        <div class="book-cover" style="background:linear-gradient(135deg,#6b3a1f,#3d1a0f)">
-          <div class="book-cover-bg">
-            <svg viewBox="0 0 24 24" fill="white">
-              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
-            </svg>
-          </div>
-          <span class="book-badge">Available</span>
-        </div>
-        <div class="book-body">
-          <div class="book-genre">History</div>
-          <div class="book-title">A Grain of Wheat</div>
-          <div class="book-author">Ngũgĩ wa Thiong'o</div>
-          <div class="book-footer">
-            <div class="book-avail">
-              <div class="dot green"></div>
-              <span class="avail-text green">5 copies</span>
-            </div>
-            <button class="book-borrow">Borrow</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="book-card fade-in">
-        <div class="book-cover" style="background:linear-gradient(135deg,#1f4a3a,#0f2d1e)">
-          <div class="book-cover-bg">
-            <svg viewBox="0 0 24 24" fill="white">
-              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
-            </svg>
-          </div>
-          <span class="book-badge" style="background:#f39c12">Low Stock</span>
-        </div>
-        <div class="book-body">
-          <div class="book-genre">Science</div>
-          <div class="book-title">A Brief History of Time</div>
-          <div class="book-author">Stephen Hawking</div>
-          <div class="book-footer">
-            <div class="book-avail">
-              <div class="dot orange"></div>
-              <span class="avail-text orange">1 copy</span>
-            </div>
-            <button class="book-borrow">Reserve</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="book-card fade-in">
-        <div class="book-cover" style="background:linear-gradient(135deg,#4a1f4a,#2d0f2d)">
-          <div class="book-cover-bg">
-            <svg viewBox="0 0 24 24" fill="white">
-              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
-            </svg>
-          </div>
-          <span class="book-badge" style="background:#e74c3c">Checked Out</span>
-        </div>
-        <div class="book-body">
-          <div class="book-genre">Technology</div>
-          <div class="book-title">Clean Code</div>
-          <div class="book-author">Robert C. Martin</div>
-          <div class="book-footer">
-            <div class="book-avail">
-              <div class="dot red"></div>
-              <span class="avail-text red">Unavailable</span>
-            </div>
-            <button class="book-borrow">Notify Me</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="book-card fade-in">
-        <div class="book-cover" style="background:linear-gradient(135deg,#3a3a1f,#22220f)">
-          <div class="book-cover-bg">
-            <svg viewBox="0 0 24 24" fill="white">
-              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
-            </svg>
-          </div>
-          <span class="book-badge">Available</span>
-        </div>
-        <div class="book-body">
-          <div class="book-genre">Biography</div>
-          <div class="book-title">Long Walk to Freedom</div>
-          <div class="book-author">Nelson Mandela</div>
-          <div class="book-footer">
-            <div class="book-avail">
-              <div class="dot green"></div>
-              <span class="avail-text green">4 copies</span>
-            </div>
-            <button class="book-borrow">Borrow</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="book-card fade-in">
-        <div class="book-cover" style="background:linear-gradient(135deg,#1f3a4a,#0f2230)">
-          <div class="book-cover-bg">
-            <svg viewBox="0 0 24 24" fill="white">
-              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
-            </svg>
-          </div>
-          <span class="book-badge">Available</span>
-        </div>
-        <div class="book-body">
-          <div class="book-genre">Non-Fiction</div>
-          <div class="book-title">Sapiens</div>
-          <div class="book-author">Yuval Noah Harari</div>
-          <div class="book-footer">
-            <div class="book-avail">
-              <div class="dot green"></div>
-              <span class="avail-text green">2 copies</span>
-            </div>
-            <button class="book-borrow">Borrow</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="book-card fade-in">
-        <div class="book-cover" style="background:linear-gradient(135deg,#4a2d1f,#2d1a0f)">
-          <div class="book-cover-bg">
-            <svg viewBox="0 0 24 24" fill="white">
-              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
-            </svg>
-          </div>
-          <span class="book-badge">Available</span>
-        </div>
-        <div class="book-body">
-          <div class="book-genre">Fiction</div>
-          <div class="book-title">Purple Hibiscus</div>
-          <div class="book-author">Chimamanda Ngozi Adichie</div>
-          <div class="book-footer">
-            <div class="book-avail">
-              <div class="dot green"></div>
-              <span class="avail-text green">6 copies</span>
-            </div>
-            <button class="book-borrow">Borrow</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="book-card fade-in">
-        <div class="book-cover" style="background:linear-gradient(135deg,#1a1a4a,#0f0f2d)">
-          <div class="book-cover-bg">
-            <svg viewBox="0 0 24 24" fill="white">
-              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
-            </svg>
-          </div>
-          <span class="book-badge" style="background:#f39c12">Low Stock</span>
-        </div>
-        <div class="book-body">
-          <div class="book-genre">Technology</div>
-          <div class="book-title">The Pragmatic Programmer</div>
-          <div class="book-author">David Thomas & Andrew Hunt</div>
-          <div class="book-footer">
-            <div class="book-avail">
-              <div class="dot orange"></div>
-              <span class="avail-text orange">1 copy</span>
-            </div>
-            <button class="book-borrow">Reserve</button>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="catalog-cta fade-in">
-      <button class="btn-primary" style="margin:0 auto"><span>View Full Catalog →</span></button>
-    </div>
-  </section>
-
-
-  <section class="how-it-works" id="how-it-works">
-    <div class="section-head fade-in">
-      <div class="section-eyebrow">The Process</div>
-      <h2>How Bridges <em>works</em></h2>
-      <p>From sign-up to reading in four simple steps.</p>
-    </div>
-    <div class="steps-row">
-      <div class="step fade-in">
-        <div class="step-num">1</div>
-        <h3>Create Account</h3>
-        <p>Register as a member in under two minutes. No paperwork, no waiting — instant digital membership.</p>
-      </div>
-      <div class="step fade-in">
-        <div class="step-num">2</div>
-        <h3>Browse Catalog</h3>
-        <p>Search thousands of books by genre, author, subject, or keyword. Filter by availability instantly.</p>
-      </div>
-      <div class="step fade-in">
-        <div class="step-num">3</div>
-        <h3>Borrow or Reserve</h3>
-        <p>Borrow available copies or reserve books that are checked out. Get notified when they're ready.</p>
-      </div>
-      <div class="step fade-in">
-        <div class="step-num">4</div>
-        <h3>Read & Return</h3>
-        <p>Enjoy your book! We'll remind you before it's due. Return in-person or renew online with a click.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="testimonials" id="about">
-    <div class="section-head fade-in">
-      <div class="section-eyebrow">Member Stories</div>
-      <h2>What our readers <em>say</em></h2>
-      <p>Bridges is changing how African institutions manage knowledge and serve communities.</p>
-    </div>
-    <div class="testimonials-grid">
-
-      <div class="testimonial-card fade-in">
-        <div class="stars">
-          <svg class="star" viewBox="0 0 24 24">
-            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-          </svg>
-          <svg class="star" viewBox="0 0 24 24">
-            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-          </svg>
-          <svg class="star" viewBox="0 0 24 24">
-            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-          </svg>
-          <svg class="star" viewBox="0 0 24 24">
-            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-          </svg>
-          <svg class="star" viewBox="0 0 24 24">
-            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-          </svg>
-        </div>
-        <span class="quote-mark">"</span>
-        <p>Bridges transformed how our university library operates. We went from chaotic spreadsheets to a smooth
-          digital system in days. Our students love the search feature.</p>
-        <div class="testimonial-author">
-          <div class="author-avatar" style="background:rgba(201,168,76,0.15)">A</div>
-          <div>
-            <div class="author-name">Amani Atieno</div>
-            <div class="author-role">Head Librarian, University of Eldoret</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="testimonial-card fade-in">
-        <div class="stars">
-          <svg class="star" viewBox="0 0 24 24">
-            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-          </svg>
-          <svg class="star" viewBox="0 0 24 24">
-            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-          </svg>
-          <svg class="star" viewBox="0 0 24 24">
-            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-          </svg>
-          <svg class="star" viewBox="0 0 24 24">
-            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-          </svg>
-          <svg class="star" viewBox="0 0 24 24">
-            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-          </svg>
-        </div>
-        <span class="quote-mark">"</span>
-        <p>The borrowing and notification system is excellent. Members actually return books on time now, and staff
-          spend less time on manual tracking. Highly recommended.</p>
-        <div class="testimonial-author">
-          <div class="author-avatar" style="background:rgba(201,168,76,0.15)">J</div>
-          <div>
-            <div class="author-name">John Simiyu</div>
-            <div class="author-role">Library Manager, Nairobi County Library</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="testimonial-card fade-in">
-        <div class="stars">
-          <svg class="star" viewBox="0 0 24 24">
-            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-          </svg>
-          <svg class="star" viewBox="0 0 24 24">
-            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-          </svg>
-          <svg class="star" viewBox="0 0 24 24">
-            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-          </svg>
-          <svg class="star" viewBox="0 0 24 24">
-            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-          </svg>
-          <svg class="star" viewBox="0 0 24 24">
-            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-          </svg>
-        </div>
-        <span class="quote-mark">"</span>
-        <p>As a student, I love being able to check book availability from my phone before making the trip to the
-          library. Bridges saves so much time and frustration.</p>
-        <div class="testimonial-author">
-          <div class="author-avatar" style="background:rgba(201,168,76,0.15)">C</div>
-          <div>
-            <div class="author-name">Charles Kimutai</div>
-            <div class="author-role">Student, University of Eldoret</div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-
-  <section class="cta-banner">
-    <div class="cta-banner-text fade-in">
-      <h2>Ready to modernise your <em>library?</em></h2>
-      <p>Join hundreds of institutions across Africa already using Bridges to connect readers with knowledge.</p>
-    </div>
-    <div class="cta-banner-btns fade-in">
-      <button class="btn-gold">Get Started Free</button>
-      <button class="btn-outline-white">Request Demo</button>
-    </div>
-  </section>
-
-
-  <footer id="contact">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <a href="#" class="logo" style="text-decoration:none">
-          <div class="logo-icon">
-            <img src="./assets/BRIDGESLOGO.png" alt="Bridges LMS Logo" />
-          </div>
-          <span class="logo-text">Bridges <em>LMS</em></span>
-        </a>
-        <p>A fully featured library management system built for African institutions, connecting communities to
-          knowledge.</p>
-        <div class="social-links" style="margin-top:20px">
-          <div class="social-link">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path
-                d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" />
-            </svg>
-          </div>
-          <div class="social-link">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-              <rect x="2" y="9" width="4" height="12" />
-              <circle cx="4" cy="4" r="2" />
-            </svg>
-          </div>
-          <div class="social-link">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-            </svg>
-          </div>
-        </div>
-      </div>
-
-      <div class="footer-col">
-        <h4>Platform</h4>
-        <ul>
-          <li><a href="#">Book Catalog</a></li>
-          <li><a href="#">Member Portal</a></li>
-          <li><a href="#">Admin Dashboard</a></li>
-          <li><a href="#">Digital Resources</a></li>
-          <li><a href="#">Mobile App</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <h4>Company</h4>
-        <ul>
-          <li><a href="#">About Bridges</a></li>
-          <li><a href="#">Our Mission</a></li>
-          <li><a href="#">Partnerships</a></li>
-          <li><a href="#">Careers</a></li>
-          <li><a href="#">Blog</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col" id="contact">
-        <h4>Support</h4>
-        <ul>
-          <li><a href="#">Help Centre</a></li>
-          <li><a href="#">Documentation</a></li>
-          <li><a href="#">System Status</a></li>
-          <li><a href="mailto:bridges@gmail.com">bridges@gmail.com</a></li>
-          <li><a href="#">Request Demo</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      <p>&copy; 2026 Bridges LMS. All rights reserved.</p>
-      <p><a href="#">Privacy Policy</a> &nbsp;·&nbsp; <a href="#">Terms of Service</a></p>
-    </div>
-  </footer>
+    function doLogin() {
+      if (loginRole === 'admin') {
+        showToast('success', 'Welcome, <strong>Admin</strong>! Redirecting to admin portal…');
+        setTimeout(() => { window.location.href = 'dashboard-admin.html'; }, 800);
+      } else {
+        showToast('success', 'Welcome back, <strong>Justo</strong>! Redirecting…');
+        setTimeout(() => { window.location.href = 'dashboard-user.html'; }, 800);
+      }
+    }
+  </script>
 </body>
-<script src="script.js"></script>
 
 </html>
