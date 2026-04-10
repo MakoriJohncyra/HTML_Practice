@@ -16,10 +16,10 @@
 
   <!-- Left Panel -->
   <div class="auth-left anim-1">
-      <div class="auth-logo">
-        <img src="assets/BRIDGESLOGO.png" alt="Bridges LMS Logo" class="auth-logo-img" />
-        <div class="auth-logo-text">Bridges <span>LMS</span></div>
-      </div>
+    <div class="auth-logo">
+      <img src="assets/BRIDGESLOGO.png" alt="Bridges LMS Logo" class="auth-logo-img" />
+      <div class="auth-logo-text">Bridges <span>LMS</span></div>
+    </div>
     <h1 class="auth-tagline">
       Join the<br/><em>Community</em><br/>Today
     </h1>
@@ -27,20 +27,6 @@
       Register as a library member to browse 10,000+ books, track your reading
       goals, and access digital resources from anywhere.
     </p>
-    <div class="auth-stats">
-      <div class="auth-stat">
-        <div class="num">10K+</div>
-        <div class="lbl">Books</div>
-      </div>
-      <div class="auth-stat">
-        <div class="num">3,800</div>
-        <div class="lbl">Members</div>
-      </div>
-      <div class="auth-stat">
-        <div class="num">24</div>
-        <div class="lbl">Genres</div>
-      </div>
-    </div>
   </div>
 
   <!-- Right Panel -->
@@ -58,17 +44,17 @@
       <div class="form-row">
         <div class="form-group">
           <label class="form-label">First Name</label>
-          <input class="form-input" placeholder="First name"/>
+          <input id="firstName" class="form-input" placeholder="First name"/>
         </div>
         <div class="form-group">
           <label class="form-label">Last Name</label>
-          <input class="form-input" placeholder="Last name"/>
+          <input id="lastName" class="form-input" placeholder="Last name"/>
         </div>
       </div>
 
       <div class="form-group">
         <label class="form-label">Email Address</label>
-        <input class="form-input" type="email" placeholder="your@email.com"/>
+        <input id="email" class="form-input" type="email" placeholder="your@email.com"/>
       </div>
 
       <div class="form-row">
@@ -89,27 +75,27 @@
 
       <div class="form-group">
         <label class="form-label">Student / Staff ID</label>
-        <input class="form-input" placeholder="e.g. CS/2024/001"/>
+        <input id="memberId" class="form-input" placeholder="e.g. CS/2024/001"/>
       </div>
 
       <div class="form-row">
         <div class="form-group">
           <label class="form-label">Password</label>
-          <input class="form-input" type="password" placeholder="Min 8 characters"/>
+          <input id="password" class="form-input" type="password" placeholder="Min 8 characters"/>
         </div>
         <div class="form-group">
           <label class="form-label">Confirm Password</label>
-          <input class="form-input" type="password" placeholder="Repeat password"/>
+          <input id="confirmPassword" class="form-input" type="password" placeholder="Repeat password"/>
         </div>
       </div>
 
       <label class="form-terms">
-        <input type="checkbox"/>
+        <input id="terms" type="checkbox"/>
         I agree to the <a href="#">Terms of Use</a> and <a href="#">Library Policy</a>
       </label>
 
       <button type="button" class="btn btn-gold btn-full" onclick="doRegister()">
-        Create Account <i class="bi bi-arrow-right" aria-hidden="true"></i>
+        Create Account <i class="bi bi-arrow-right"></i>
       </button>
 
       <p class="auth-switch">
@@ -121,6 +107,7 @@
 </div>
 
 <div id="toast"></div>
+
 <script src="bridges-lms.js"></script>
 <script src="register-logic.js"></script>
 </body>

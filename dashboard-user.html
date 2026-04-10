@@ -31,9 +31,9 @@
       <span class="notif-badge">2</span>
     </div>
     <div class="header-user">
-      <div class="header-avatar">J</div>
+      <div class="header-avatar" id="header-avatar">J</div>
       <div>
-        <div class="header-uname">Justo Kimani</div>
+        <div class="header-uname" id="header-uname">Justo Kimani</div>
         <div class="header-role">Library Member · Gold</div>
       </div>
     </div>
@@ -80,7 +80,9 @@
     <div id="u-home" class="view active">
       <div class="page-title-block anim-1">
         <div class="page-eyebrow">Dashboard</div>
-        <h1 class="page-title">Good morning, <em>Justo</em> <i class="bi bi-sun-fill" aria-hidden="true"></i></h1>
+        <h1 class="page-title" id="dashboard-greeting">
+          <!-- Populated by JS -->
+        </h1>
         <p class="page-subtitle">You have 2 active borrowings. Check due dates below.</p>
       </div>
 
@@ -407,13 +409,13 @@
       <div class="two-col anim-2">
         <div class="form-section">
           <div class="profile-avatar-wrap">
-            <div class="profile-avatar">J</div>
-            <div class="profile-name">Justo Kimani</div>
-            <div class="profile-sub">CS/2024/001 · Gold Member</div>
+            <div class="profile-avatar" id="profile-avatar">J</div>
+            <div class="profile-name" id="profile-name">Justo Kimani</div>
+            <div class="profile-sub" id="profile-sub">CS/2024/001 · Gold Member</div>
           </div>
           <div class="form-group">
             <label class="form-label">Full Name</label>
-            <input class="form-input" value="Justo Kimani"/>
+            <input class="form-input" id="profile-input-name" value="Justo Kimani"/>
           </div>
           <div class="form-group">
             <label class="form-label">Email</label>
@@ -482,6 +484,57 @@
 <div id="toast"></div>
 <script src="bridges-lms.js"></script>
 <script>
+
+  // ── Logged-in user config ───────────────────────────────
+  // Replace these values with data from your auth session / API
+ const stored = localStorage.getItem('bridgesUser');
+const currentUser = stored ? JSON.parse(stored) : { firstName: 'Demo', fullName: 'Demo User' };
+
+  // ── Dynamic greeting helpers ────────────────────────────
+  function getGreeting() {
+    const hour = new Date().getHours();
+    if (hour < 12) return 'Good morning';
+    if (hour < 17) return 'Good afternoon';
+    return 'Good evening';
+  }
+
+  function getGreetingIcon() {
+    const hour = new Date().getHours();
+    if (hour < 12) return 'bi-sun-fill';
+    if (hour < 17) return 'bi-brightness-high-fill';
+    return 'bi-moon-stars-fill';
+  }
+
+  // ── Apply user info across the page ────────────────────
+  function applyUserInfo() {
+    const initial = currentUser.firstName.charAt(0).toUpperCase();
+
+    // Greeting headline
+    const greetEl = document.getElementById('dashboard-greeting');
+    if (greetEl) {
+      greetEl.innerHTML =
+        `${getGreeting()}, <em>${currentUser.firstName}</em> ` +
+        `<i class="bi ${getGreetingIcon()}" aria-hidden="true"></i>`;
+    }
+
+    // Header name & avatar
+    const headerUname = document.getElementById('header-uname');
+    if (headerUname) headerUname.textContent = currentUser.fullName;
+
+    const headerAvatar = document.getElementById('header-avatar');
+    if (headerAvatar) headerAvatar.textContent = initial;
+
+    // Profile section
+    const profileName = document.getElementById('profile-name');
+    if (profileName) profileName.textContent = currentUser.fullName;
+
+    const profileAvatar = document.getElementById('profile-avatar');
+    if (profileAvatar) profileAvatar.textContent = initial;
+
+    const profileInputName = document.getElementById('profile-input-name');
+    if (profileInputName) profileInputName.value = currentUser.fullName;
+  }
+
   // ── View switching ──────────────────────────────────────
   function switchView(id) {
     document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
@@ -498,6 +551,7 @@
 
   // ── Init ────────────────────────────────────────────────
   document.addEventListener('DOMContentLoaded', () => {
+    applyUserInfo();
     renderUserBorrows();
     renderSearchResults();
     renderHistory();
@@ -510,7 +564,6 @@
 
   // ── Mobile nav & sidebar toggle ─────────────────────────
   (function () {
-    // Inject hamburger button into header
     const header = document.querySelector('.app-header');
     if (!header) return;
 
@@ -520,7 +573,6 @@
     toggle.innerHTML = '<i class="bi bi-list"></i>';
     header.prepend(toggle);
 
-    // Inject sidebar backdrop
     const backdrop = document.createElement('div');
     backdrop.className = 'sidebar-backdrop';
     document.body.appendChild(backdrop);
@@ -546,7 +598,6 @@
     );
     backdrop.addEventListener('click', closeMenu);
 
-    // Close drawer when a nav item is tapped
     document.querySelectorAll('.sidebar-item, .header-nav li').forEach(el => {
       el.addEventListener('click', closeMenu);
     });
