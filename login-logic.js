@@ -1,13 +1,7 @@
-// ==========================
-// Bridges LMS - Login Logic
-// ==========================
 
-// Default role
 let selectedRole = "user";
 
-// --------------------------
-// Role Selection
-// --------------------------
+
 function selectLoginRole(el, role) {
   document.querySelectorAll('.role-card').forEach(card => {
     card.classList.remove('selected');
@@ -17,9 +11,7 @@ function selectLoginRole(el, role) {
   selectedRole = role;
 }
 
-// --------------------------
-// Login Function
-// --------------------------
+
 function doLogin() {
   const email = document.getElementById('login-email').value.trim();
   const password = document.getElementById('login-pass').value.trim();
@@ -35,9 +27,6 @@ function doLogin() {
     return;
   }
 
-  // --------------------------
-  // Check Registered User
-  // --------------------------
   const storedUser = JSON.parse(localStorage.getItem('bridgesUser'));
 
   if (selectedRole === "user" && storedUser) {
@@ -53,9 +42,7 @@ function doLogin() {
     }
   }
 
-  // --------------------------
-  // Admin Login
-  // --------------------------
+
   if (selectedRole === "admin" && email === "admin" && password === "123") {
     const stored = localStorage.getItem('bridgesAdmin');
     if (!stored) {
@@ -74,9 +61,7 @@ function doLogin() {
     return;
   }
 
-  // --------------------------
-  // Demo fallback (optional)
-  // --------------------------
+
   if (selectedRole === "user" && email === "demo" && password === "123") {
     localStorage.setItem('bridgesUser', JSON.stringify({
       firstName: 'Demo',
@@ -95,13 +80,10 @@ function doLogin() {
     return;
   }
 
-  // Invalid credentials
+
   showToast('error', 'Invalid credentials. Please try again.');
 }
 
-// --------------------------
-// Quick Demo Login Buttons
-// --------------------------
 function quickLogin(role) {
   if (role === "user") {
     document.getElementById('login-email').value = "demo";
@@ -111,7 +93,7 @@ function quickLogin(role) {
     document.getElementById('login-pass').value = "123";
   }
 
-  // Update role selection visually
+
   document.querySelectorAll('.role-card').forEach(card => {
     if (card.dataset.role === role) {
       selectLoginRole(card, role);
@@ -119,9 +101,7 @@ function quickLogin(role) {
   });
 }
 
-// --------------------------
-// Toast Notification (Fallback)
-// --------------------------
+
 function showToast(type, message) {
   const toast = document.getElementById('toast');
 
