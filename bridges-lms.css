@@ -1,6 +1,3 @@
-/* ============================================================
-   BRIDGES LMS — Shared Stylesheet
-   ============================================================ */
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
@@ -28,7 +25,6 @@
 html{scroll-behavior:smooth}
 body{font-family:'Lato',sans-serif;background:var(--cream);color:var(--text);min-height:100vh}
 
-/* ── Animations ─────────────────────────────────────────── */
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 @keyframes slideRight{from{opacity:0;transform:translateX(-20px)}to{opacity:1;transform:translateX(0)}}
@@ -39,7 +35,6 @@ body{font-family:'Lato',sans-serif;background:var(--cream);color:var(--text);min
 .anim-3{animation:fadeUp .5s ease both .25s}
 .anim-4{animation:fadeUp .5s ease both .35s}
 
-/* ── Auth Layout ────────────────────────────────────────── */
 .auth-page{
   min-height:100vh;
   display:grid;
@@ -75,28 +70,25 @@ body{font-family:'Lato',sans-serif;background:var(--cream);color:var(--text);min
 }
 
 .auth-logo-img {
-  width: 120px;          /* adjust to taste */
+  width: 120px;          
   height: auto;
   object-fit: contain;
 
-  /* The logo has a black background — use mix-blend-mode
-     so it blends cleanly on dark auth backgrounds */
-  mix-blend-mode: screen;   /* use 'normal' if your auth bg is already dark/black */
+  mix-blend-mode: screen;   
 
-  /* Optional: if you want to strip the black background on light themes */
-  /* filter: invert(1); */ /* only use if needed for light bg */
+
 }
 
 .auth-logo-text {
   font-size: 1.4rem;
   font-weight: 700;
   letter-spacing: 0.08em;
-  color: #f5f0e8;          /* cream, matching the logo's white text */
+  color: #f5f0e8;          
   text-transform: uppercase;
 }
 
 .auth-logo-text span {
-  color: #c9a84c;          /* gold, pulled from the logo's arc accent */
+  color: #c9a84c;          
 }
 
 .auth-tagline{
@@ -142,7 +134,6 @@ body{font-family:'Lato',sans-serif;background:var(--cream);color:var(--text);min
 }
 .auth-box{width:100%;max-width:440px}
 
-/* ── Auth Tabs ──────────────────────────────────────────── */
 .auth-tabs{
   display:flex;
   gap:0;
@@ -183,7 +174,6 @@ body{font-family:'Lato',sans-serif;background:var(--cream);color:var(--text);min
 }
 .auth-form-sub{font-size:14px;color:var(--muted);margin-bottom:28px}
 
-/* ── Role Selector ──────────────────────────────────────── */
 .role-selector{
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -206,7 +196,6 @@ body{font-family:'Lato',sans-serif;background:var(--cream);color:var(--text);min
 .role-card .role-name{font-size:13px;font-weight:700;color:var(--navy)}
 .role-card .role-desc{font-size:11px;color:var(--muted);margin-top:2px}
 
-/* ── Auth Footer Links ──────────────────────────────────── */
 .auth-divider{
   display:flex;
   align-items:center;
@@ -224,7 +213,6 @@ body{font-family:'Lato',sans-serif;background:var(--cream);color:var(--text);min
 .auth-switch a{color:var(--gold);font-weight:700;cursor:pointer;text-decoration:none}
 .auth-switch a:hover{text-decoration:underline}
 
-/* ── Form Elements ──────────────────────────────────────── */
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .form-group{margin-bottom:18px}
 
@@ -311,7 +299,6 @@ body{font-family:'Lato',sans-serif;background:var(--cream);color:var(--text);min
 .form-terms a{color:var(--gold);font-weight:700;margin:0 3px;text-decoration:none}
 .form-terms a:hover{text-decoration:underline}
 
-/* ── Buttons ────────────────────────────────────────────── */
 .btn{
   padding:13px 28px;
   border-radius:var(--r);
@@ -344,7 +331,6 @@ body{font-family:'Lato',sans-serif;background:var(--cream);color:var(--text);min
 .btn-demo-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .btn-demo{font-size:12px}
 
-/* ── App Header ─────────────────────────────────────────── */
 .app-header{
   background:var(--navy);
   height:64px;
@@ -364,10 +350,10 @@ body{font-family:'Lato',sans-serif;background:var(--cream);color:var(--text);min
 }
 
 .header-logo-img {
-  width: 48px;           /* fits snugly in a header bar */
+  width: 48px;           
   height: 48px;
   object-fit: contain;
-  mix-blend-mode: screen; /* drops the black bg on dark headers */
+  mix-blend-mode: screen; 
 }
 
 .header-logo-text {
@@ -379,7 +365,7 @@ body{font-family:'Lato',sans-serif;background:var(--cream);color:var(--text);min
 }
 
 .header-logo-text span {
-  color: #c9a84c;        /* gold accent from the logo */
+  color: #c9a84c;        
 }
 
 .header-nav{display:flex;list-style:none;gap:2px;flex:1}
@@ -447,7 +433,6 @@ body{font-family:'Lato',sans-serif;background:var(--cream);color:var(--text);min
 
 
 
-/* ── Layout ─────────────────────────────────────────────── */
 .portal-layout{
   display:grid;
   grid-template-columns:240px 1fr;
@@ -458,7 +443,6 @@ body{font-family:'Lato',sans-serif;background:var(--cream);color:var(--text);min
 .user-layout{display:flex}
 .user-main{flex:1;padding:36px 40px;background:#edeae4;min-height:calc(100vh - 64px)}
 
-/* ── Sidebar ────────────────────────────────────────────── */
 .sidebar{
   background:var(--navy);
   padding:24px 0;
@@ -521,7 +505,6 @@ body{font-family:'Lato',sans-serif;background:var(--cream);color:var(--text);min
 .sidebar-signout{margin-top:24px;color:rgba(192,57,43,.7)}
 .sidebar-spacer{margin-top:auto}
 
-/* ── Page Title Block ───────────────────────────────────── */
 .page-title-block{margin-bottom:32px}
 .page-eyebrow{
   font-size:11px;
@@ -545,7 +528,6 @@ body{font-family:'Lato',sans-serif;background:var(--cream);color:var(--text);min
 .page-title em{color:var(--gold);font-style:italic}
 .page-subtitle{font-size:14.5px;color:var(--muted);margin-top:6px}
 
-/* ── Cards ──────────────────────────────────────────────── */
 .card{
   background:#fff;
   border-radius:14px;
@@ -570,7 +552,6 @@ body{font-family:'Lato',sans-serif;background:var(--cream);color:var(--text);min
 .card-mt{margin-top:18px}
 .card-mt-lg{margin-top:22px}
 
-/* ── KPI Grid ───────────────────────────────────────────── */
 .kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:28px}
 .kpi-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px}
 
@@ -605,7 +586,6 @@ body{font-family:'Lato',sans-serif;background:var(--cream);color:var(--text);min
 .kpi-sub{font-size:11.5px;font-weight:700;margin-top:8px;color:var(--green)}
 .kpi-sub.warn{color:var(--red)}
 
-/* ── Tables ─────────────────────────────────────────────── */
 .tbl-wrap{overflow-x:auto}
 table{width:100%;border-collapse:collapse;font-size:13.5px}
 thead tr{background:var(--cream2)}
@@ -640,7 +620,6 @@ tr:hover td{background:rgba(201,168,76,.04)}
 .td-available-none{font-weight:700;color:var(--red)}
 .td-done{color:var(--muted);font-size:12px}
 
-/* ── Badges ─────────────────────────────────────────────── */
 .badge{
   display:inline-flex;
   align-items:center;
@@ -658,7 +637,7 @@ tr:hover td{background:rgba(201,168,76,.04)}
 .badge-blue{background:rgba(37,99,168,.1);color:var(--blue);border:1px solid rgba(37,99,168,.2)}
 .badge-grey{background:rgba(107,112,128,.1);color:var(--muted);border:1px solid rgba(107,112,128,.2)}
 
-/* ── Search Row ─────────────────────────────────────────── */
+
 .search-row{display:flex;gap:12px;margin-bottom:22px;flex-wrap:wrap}
 .search-input-wrap{
   flex:1;
@@ -701,7 +680,7 @@ tr:hover td{background:rgba(201,168,76,.04)}
   min-width:150px;
 }
 
-/* ── Form Sections ──────────────────────────────────────── */
+
 .form-section{
   background:#fff;
   border-radius:14px;
@@ -725,7 +704,6 @@ tr:hover td{background:rgba(201,168,76,.04)}
 .form-section-icon{display:inline-flex;align-items:center}
 .form-section-icon .bi{font-size:1.2rem}
 
-/* ── Alerts ─────────────────────────────────────────────── */
 .alert{
   padding:14px 18px;
   border-radius:var(--r);
@@ -741,7 +719,7 @@ tr:hover td{background:rgba(201,168,76,.04)}
 .alert-icon{display:inline-flex;flex-shrink:0;margin-top:1px}
 .alert-icon .bi{font-size:1.15rem}
 
-/* ── Page Tabs ──────────────────────────────────────────── */
+
 .page-tabs{
   display:flex;
   gap:4px;
@@ -769,19 +747,17 @@ tr:hover td{background:rgba(201,168,76,.04)}
 .page-tab .bi{font-size:1rem;opacity:.85}
 .page-tab.active{background:#fff;color:var(--navy);box-shadow:0 2px 8px rgba(15,31,61,.1)}
 
-/* ── Grids ──────────────────────────────────────────────── */
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:22px}
 .three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:22px}
 
-/* ── Progress Bar ───────────────────────────────────────── */
+
 .prog-wrap{height:6px;background:rgba(15,31,61,.08);border-radius:3px;overflow:hidden;margin-top:8px}
 .prog-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--navy),var(--gold))}
 .prog-wrap-lg{height:10px}
 
-/* ── Fine Amount ────────────────────────────────────────── */
 .fine-amount{font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--red)}
 
-/* ── Toast ──────────────────────────────────────────────── */
+
 #toast{
   position:fixed;
   bottom:28px;right:28px;
@@ -923,7 +899,6 @@ tr:hover td{background:rgba(201,168,76,.04)}
 }
 .goal-stat-lbl{font-size:11px;color:var(--muted);margin-top:3px}
 
-/* ── Profile ────────────────────────────────────────────── */
 .profile-avatar-wrap{text-align:center;margin-bottom:24px}
 .profile-avatar{
   width:80px;height:80px;
@@ -949,7 +924,6 @@ tr:hover td{background:rgba(201,168,76,.04)}
 .membership-label{font-size:13px;color:var(--muted)}
 .membership-value{font-size:13.5px;font-weight:700;color:var(--navy)}
 
-/* ── Admin: Top Books ───────────────────────────────────── */
 .top-book-row{display:flex;align-items:center;gap:14px;margin-bottom:14px}
 .top-book-row:last-child{margin-bottom:0}
 .top-book-rank{
@@ -964,7 +938,6 @@ tr:hover td{background:rgba(201,168,76,.04)}
 .top-book-title{font-size:13.5px;font-weight:700;color:var(--navy)}
 .top-book-count{font-size:13px;font-weight:700;color:var(--navy)}
 
-/* ── Admin: Activity Stats Box ──────────────────────────── */
 .stat-box{
   display:flex;justify-content:space-between;align-items:center;
   padding:10px 14px;border-radius:8px;margin-bottom:12px;
@@ -981,7 +954,6 @@ tr:hover td{background:rgba(201,168,76,.04)}
 .stat-box-num-red{color:var(--red)}
 .stat-box-num-blue{color:var(--blue)}
 
-/* ── Member Lookup Card ─────────────────────────────────── */
 .member-lookup-card{
   display:flex;align-items:center;gap:14px;
   padding:14px;background:var(--cream);
@@ -1004,14 +976,11 @@ tr:hover td{background:rgba(201,168,76,.04)}
 .member-stat-value-ok{color:var(--green)}
 .member-stat-value-bad{color:var(--red)}
 
-/* ── Views (single-page panels) ────────────────────────── */
 .view{display:none}
 .view.active{display:block}
 
-/* ── Dashboard sun icon colour ──────────────────────────── */
 .bi-sun-fill{color:var(--gold)}
 
-/* ── Policy List (Borrow page) ──────────────────────────── */
 .policy-list{display:flex;flex-direction:column;gap:14px}
 .policy-item{display:flex;gap:12px;align-items:flex-start}
 .policy-icon{display:inline-flex;color:var(--navy);flex-shrink:0;margin-top:2px}
@@ -1019,31 +988,22 @@ tr:hover td{background:rgba(201,168,76,.04)}
 .policy-title{font-weight:700;font-size:13.5px;color:var(--navy)}
 .policy-desc{font-size:13px;color:var(--muted);margin-top:2px}
 
-/* ── Button Row (form action group) ────────────────────── */
 .btn-row{display:flex;gap:12px}
 
-/* ── Dashboard Greetings ────────────────────────────────── */
+
 .bi{display:inline-block;vertical-align:-0.125em;line-height:1}
 
-/* ============================================================
-   BRIDGES LMS — Responsive System
-   Breakpoints:
-     Mobile  : < 640px
-     Tablet  : 640px – 1023px
-     Desktop : ≥ 1024px
-   ============================================================ */
+   
 
-/* ── Shared: tables always scroll on small screens ─────── */
+
 .tbl-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
 table { min-width: 560px; }
 
-/* ── Shared: images never overflow ─────────────────────── */
+
 img { max-width: 100%; height: auto; }
 
 
-/* ============================================================
-   TABLET  640px – 1023px
-   ============================================================ */
+
 @media (max-width: 1023px) {
 
   /* Auth */
@@ -1089,17 +1049,14 @@ img { max-width: 100%; height: auto; }
 }
 
 
-/* ============================================================
-   MOBILE  < 640px
-   ============================================================ */
+
 @media (max-width: 639px) {
 
-  /* ── Auth pages ─────────────────────────────────────── */
+
   .auth-right  { padding: 28px 18px; min-height: 100vh; align-items: flex-start; }
   .auth-box    { padding-top: 20px; }
   .auth-form-title { font-size: 22px; }
 
-  /* Show a compact logo on mobile auth (left panel hidden) */
   .auth-box::before {
     content: 'BRIDGES LMS';
     display: block;
@@ -1114,7 +1071,7 @@ img { max-width: 100%; height: auto; }
     border-bottom: 2px solid var(--cream3);
   }
 
-  /* ── App Header ─────────────────────────────────────── */
+  
   .app-header {
     padding: 0 14px;
     height: 56px;
@@ -1140,11 +1097,11 @@ img { max-width: 100%; height: auto; }
     cursor: pointer;
     font-size: 1.2rem;
     flex-shrink: 0;
-    margin-right: auto;   /* pushes logo to right of toggle */
+    margin-right: auto;   
     order: -1;
   }
 
-  /* ── Mobile sidebar drawer ──────────────────────────── */
+  
   .sidebar {
     display: block;
     position: fixed;
@@ -1155,11 +1112,11 @@ img { max-width: 100%; height: auto; }
     transform: translateX(-100%);
     transition: transform .28s cubic-bezier(.4,0,.2,1);
     overflow-y: auto;
-    padding-top: 70px;   /* clears header */
+    padding-top: 70px;   
   }
   .sidebar.open { transform: translateX(0); }
 
-  /* Drawer backdrop */
+  
   .sidebar-backdrop {
     display: none;
     position: fixed;
@@ -1170,7 +1127,7 @@ img { max-width: 100%; height: auto; }
   }
   .sidebar-backdrop.open { display: block; }
 
-  /* Mobile nav links drawer (header nav) */
+  
   .header-nav {
     display: none;
     position: fixed;
@@ -1194,70 +1151,61 @@ img { max-width: 100%; height: auto; }
     background: rgba(255,255,255,.07);
   }
 
-  /* ── Layouts ────────────────────────────────────────── */
+  
   .portal-main,
   .user-main { padding: 20px 14px; min-height: calc(100vh - 56px); }
 
-  /* ── KPI grids ──────────────────────────────────────── */
+  
   .kpi-grid   { grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
   .kpi-grid-3 { grid-template-columns: 1fr 1fr; gap: 10px; }
   .kpi        { padding: 16px 14px; }
   .kpi-val    { font-size: 26px; }
   .kpi-icon .bi { font-size: 1.2rem; }
 
-  /* ── Two / Three col ────────────────────────────────── */
+  
   .two-col   { grid-template-columns: 1fr; gap: 14px; }
   .three-col { grid-template-columns: 1fr; gap: 14px; }
 
-  /* ── Cards ──────────────────────────────────────────── */
+  
   .card-header { padding: 16px 16px 0; }
   .card-body   { padding: 16px; }
   .card-title  { font-size: 15px; }
 
-  /* ── Page title ─────────────────────────────────────── */
   .page-title-block { margin-bottom: 20px; }
   .page-title { font-size: 22px; }
   .page-subtitle { font-size: 13px; }
 
-  /* ── Form rows & sections ───────────────────────────── */
   .form-row     { grid-template-columns: 1fr; gap: 0; }
   .form-section { padding: 20px 16px; }
   .form-section-title { font-size: 16px; }
 
-  /* ── Search row ─────────────────────────────────────── */
   .search-row { flex-direction: column; gap: 10px; }
   .search-input-wrap { width: 100%; }
   .filter-sel { width: 100%; }
 
-  /* ── Role selector ──────────────────────────────────── */
   .role-selector { grid-template-columns: 1fr 1fr; gap: 10px; }
   .role-card { padding: 12px 10px; }
 
-  /* ── Goal widget ────────────────────────────────────── */
+  
   .goal-grid    { grid-template-columns: 1fr; gap: 16px; }
   .goal-number  { font-size: 36px; }
   .goal-stats   { grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
   .goal-stat    { padding: 10px 6px; }
   .goal-stat-num{ font-size: 18px; }
 
-  /* ── Reading goal progress card ─────────────────────── */
   .card-mt-lg { margin-top: 14px; }
   .card-mt    { margin-top: 12px; }
 
-  /* ── Auth box inner ─────────────────────────────────── */
   .auth-tabs    { margin-bottom: 24px; }
   .auth-stats   { gap: 20px; }
 
-  /* ── Tables ─────────────────────────────────────────── */
   table  { min-width: 500px; font-size: 12.5px; }
   th, td { padding: 10px 12px; }
 
-  /* ── Buttons ────────────────────────────────────────── */
   .btn-demo-grid { grid-template-columns: 1fr; gap: 8px; }
   .btn-row { flex-direction: column; gap: 10px; }
   .btn-row .btn { width: 100%; }
 
-  /* ── Page tabs ──────────────────────────────────────── */
   .page-tabs {
     overflow-x: auto;
     white-space: nowrap;
