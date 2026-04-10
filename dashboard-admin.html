@@ -12,7 +12,6 @@
 </head>
 <body>
 
-<!-- ── Header ────────────────────────────────────────────── -->
 <header class="app-header">
   <a class="header-logo" href="#" onclick="switchView('a-dash')">
      <img src="/assets/BRIDGESLOGO.png" alt="Bridges LMS Logo" class="header-logo-img" />
@@ -27,10 +26,7 @@
     <li id="anav-activities" onclick="switchView('a-activities')"><i class="bi bi-journal-text" aria-hidden="true"></i> Activities</li>
   </ul>
   <div class="header-right">
-    <div class="notif-btn" title="Notifications">
-      <i class="bi bi-bell-fill" aria-hidden="true"></i>
-      <span class="notif-badge">5</span>
-    </div>
+    
     <div class="header-user">
       <div class="header-avatar">A</div>
       <div>
@@ -42,7 +38,6 @@
   </div>
 </header>
 
-<!-- ── Portal Layout ─────────────────────────────────────── -->
 <div class="portal-layout">
 
   <!-- Sidebar -->
@@ -80,10 +75,8 @@
 
   </div>
 
-  <!-- Main Content -->
   <div class="portal-main">
 
-    <!-- ── DASHBOARD VIEW ────────────────────────────────── -->
     <div id="a-dash" class="view active">
       <div class="page-title-block anim-1">
         <div class="page-eyebrow">Admin Dashboard</div>
@@ -232,7 +225,6 @@
       </div>
     </div>
 
-    <!-- ── MANAGE BOOKS VIEW ──────────────────────────────── -->
     <div id="a-books" class="view">
       <div class="page-title-block anim-1">
         <div class="page-eyebrow">Catalog Management</div>
@@ -318,7 +310,6 @@
       </div>
     </div>
 
-    <!-- ── MANAGE MEMBERS VIEW ───────────────────────────── -->
     <div id="a-students" class="view">
       <div class="page-title-block anim-1">
         <div class="page-eyebrow">Member Management</div>
@@ -402,7 +393,6 @@
       </div>
     </div>
 
-    <!-- ── ISSUED BOOKS VIEW ──────────────────────────────── -->
     <div id="a-issued" class="view">
       <div class="page-title-block anim-1">
         <div class="page-eyebrow">Circulation</div>
@@ -451,7 +441,6 @@
       </div>
     </div>
 
-    <!-- ── DEFAULTERS VIEW ────────────────────────────────── -->
     <div id="a-defaulters" class="view">
       <div class="page-title-block anim-1">
         <div class="page-eyebrow">Overdue Management</div>
@@ -490,7 +479,6 @@
       </div>
     </div>
 
-    <!-- ── ACTIVITIES VIEW ────────────────────────────────── -->
     <div id="a-activities" class="view">
       <div class="page-title-block anim-1">
         <div class="page-eyebrow">Audit Log</div>
@@ -565,7 +553,6 @@
       </div>
     </div>
 
-    <!-- ── ISSUE BOOK (ADMIN) VIEW ────────────────────────── -->
     <div id="a-issue-admin" class="view">
       <div class="page-title-block anim-1">
         <div class="page-eyebrow">Circulation</div>
@@ -624,7 +611,6 @@
       </div>
     </div>
 
-    <!-- ── SETTINGS VIEW ──────────────────────────────────── -->
     <div id="a-settings" class="view">
       <div class="page-title-block anim-1">
         <div class="page-eyebrow">System</div>
@@ -661,13 +647,12 @@
       </div>
     </div>
 
-  </div><!-- /portal-main -->
-</div><!-- /portal-layout -->
+  </div>
+</div>
 
 <div id="toast"></div>
 <script src="bridges-lms.js"></script>
 <script>
-  // ── View switching ──────────────────────────────────────
   function switchView(id) {
     document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
     document.getElementById(id).classList.add('active');
