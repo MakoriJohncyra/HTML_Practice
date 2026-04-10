@@ -113,35 +113,6 @@
 
   <div id="toast"></div>
   <script src="bridges-lms.js"></script>
-  <script>
-    // Page-specific: login logic
-    let loginRole = 'user';
-
-    function selectLoginRole(el, role) {
-      loginRole = role;
-      document.querySelectorAll('#login-role-sel .role-card').forEach(c => c.classList.remove('selected'));
-      el.classList.add('selected');
-    }
-
-    function quickLogin(role) {
-      loginRole = role;
-      if (role === 'admin') {
-        document.querySelectorAll('#login-role-sel .role-card').forEach(c => c.classList.remove('selected'));
-        document.querySelector('[data-role="admin"]').classList.add('selected');
-      }
-      doLogin();
-    }
-
-    function doLogin() {
-      if (loginRole === 'admin') {
-        showToast('success', 'Welcome, <strong>Admin</strong>! Redirecting to admin portal…');
-        setTimeout(() => { window.location.href = 'dashboard-admin.html'; }, 800);
-      } else {
-        showToast('success', 'Welcome back, <strong>Justo</strong>! Redirecting…');
-        setTimeout(() => { window.location.href = 'dashboard-user.html'; }, 800);
-      }
-    }
-  </script>
+<script src="login-logic.js"></script>
 </body>
-
 </html>
