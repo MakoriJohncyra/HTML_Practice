@@ -1,45 +1,95 @@
-function doRegister() {
-    const firstName = document.querySelectorAll('.form-input')[0].value.trim();
-    const lastName  = document.querySelectorAll('.form-input')[1].value.trim();
-    const email     = document.querySelectorAll('.form-input')[2].value.trim();
-    const memberId  = document.querySelectorAll('.form-input')[3].value.trim();
-    const password  = document.querySelectorAll('.form-input')[4].value.trim();
-    const confirm   = document.querySelectorAll('.form-input')[5].value.trim();
-    const terms     = document.querySelector('.form-terms input').checked;
+// ==========================
+// Bridges LMS - Login Logic
+// ==========================
 
-    
-    if (!firstName) {
-      showToast('error', 'Please enter your first name.'); return;
-    }
-    if (!lastName) {
-      showToast('error', 'Please enter your last name.'); return;
-    }
-    if (!email) {
-      showToast('error', 'Please enter your email address.'); return;
-    }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      showToast('error', 'Please enter a valid email address.'); return;
-    }
-    if (!memberId) {
-      showToast('error', 'Please enter your Student / Staff ID.'); return;
-    }
-    if (!password) {
-      showToast('error', 'Please enter a password.'); return;
-    }
-    if (password.length < 8) {
-      showToast('error', 'Password must be at least 8 characters.'); return;
-    }
-    if (!confirm) {
-      showToast('error', 'Please confirm your password.'); return;
-    }
-    if (password !== confirm) {
-      showToast('error', 'Passwords do not match.'); return;
-    }
-    if (!terms) {
-      showToast('error', 'Please agree to the Terms of Use and Library Policy.'); return;
-    }
+// Default role
+let selectedRole = "user";
 
-    
-    showToast('success', 'Account created! Redirecting to sign in…');
-    setTimeout(() => { window.location.href = 'index.html'; }, 1000);
+// --------------------------
+// Role Selection
+// --------------------------
+function selectLoginRole(el, role) {
+  document.querySelectorAll('.role-card').forEach(card => {
+    card.classList.remove('selected');
+  });
+
+  el.classList.add('selected');
+  selectedRole = role;
+}
+
+// --------------------------
+// Login Function
+// --------------------------
+function doLogin() {
+  const email = document.getElementById('login-email').value.trim();
+  const password = document.getElementById('login-pass').value.trim();
+
+  // Validation
+  if (!email) {
+    showToast('error', 'Please enter your email or Member ID.');
+    return;
   }
+
+  if (!password) {
+    showToast('error', 'Please enter your password.');
+    return;
+  }
+
+  // --------------------------
+  // Demo Credentials
+  // --------------------------
+  if (selectedRole === "user" && email === "demo" && password === "123") {
+    showToast('success', 'Login successful! Redirecting...');
+    setTimeout(() => {
+      window.location.href = "dashboard-user.html";
+    }, 1000);
+    return;
+  }
+
+  if (selectedRole === "admin" && email === "admin" && password === "123") {
+    showToast('success', 'Admin login successful! Redirecting...');
+    setTimeout(() => {
+      window.location.href = "dashboard-admin.html";
+    }, 1000);
+    return;
+  }
+
+  // Invalid credentials
+  showToast('error', 'Invalid credentials. Please try again.');
+}
+
+// --------------------------
+// Quick Demo Login Buttons
+// --------------------------
+function quickLogin(role) {
+  if (role === "user") {
+    document.getElementById('login-email').value = "demo";
+    document.getElementById('login-pass').value = "123";
+  } else {
+    document.getElementById('login-email').value = "admin";
+    document.getElementById('login-pass').value = "123";
+  }
+
+  // Update role selection visually
+  document.querySelectorAll('.role-card').forEach(card => {
+    if (card.dataset.role === role) {
+      selectLoginRole(card, role);
+    }
+  });
+}
+
+// --------------------------
+// Toast Notification (Fallback)
+// --------------------------
+function showToast(type, message) {
+  const toast = document.getElementById('toast');
+
+  if (!toast) return;
+
+  toast.textContent = message;
+  toast.className = `toast show ${type}`;
+
+  setTimeout(() => {
+    toast.className = 'toast';
+  }, 3000);
+}
