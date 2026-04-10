@@ -12,7 +12,6 @@
 </head>
 <body>
 
-<!-- ── Header ────────────────────────────────────────────── -->
 <header class="app-header">
   <a class="header-logo" href="#" onclick="switchView('u-home')">
     <img src="/assets/BRIDGESLOGO.png" alt="Bridges LMS Logo" class="header-logo-img" />
@@ -41,10 +40,8 @@
   </div>
 </header>
 
-<!-- ── Body Layout ───────────────────────────────────────── -->
 <div class="user-layout">
 
-  <!-- Sidebar -->
   <div class="sidebar">
     <div class="sidebar-group-label">Main</div>
     <div class="sidebar-item active" id="usb-home" onclick="switchView('u-home')">
@@ -235,7 +232,6 @@
       </div>
     </div>
 
-    <!-- ── BORROW VIEW ────────────────────────────────────── -->
     <div id="u-issue" class="view">
       <div class="page-title-block anim-1">
         <div class="page-eyebrow">Borrow</div>
@@ -329,7 +325,6 @@
       </div>
     </div>
 
-    <!-- ── RETURN VIEW ────────────────────────────────────── -->
     <div id="u-return" class="view">
       <div class="page-title-block anim-1">
         <div class="page-eyebrow">Return</div>
@@ -400,7 +395,6 @@
       </div>
     </div>
 
-    <!-- ── PROFILE VIEW ───────────────────────────────────── -->
     <div id="u-profile" class="view">
       <div class="page-title-block anim-1">
         <div class="page-eyebrow">Account</div>
@@ -478,131 +472,11 @@
       </div>
     </div>
 
-  </div><!-- /user-main -->
-</div><!-- /user-layout -->
+  </div>
+</div>
 
 <div id="toast"></div>
 <script src="bridges-lms.js"></script>
-<script>
-
-  // ── Logged-in user config ───────────────────────────────
-  // Replace these values with data from your auth session / API
- const stored = localStorage.getItem('bridgesUser');
-const currentUser = stored ? JSON.parse(stored) : { firstName: 'Demo', fullName: 'Demo User' };
-
-  // ── Dynamic greeting helpers ────────────────────────────
-  function getGreeting() {
-    const hour = new Date().getHours();
-    if (hour < 12) return 'Good morning';
-    if (hour < 17) return 'Good afternoon';
-    return 'Good evening';
-  }
-
-  function getGreetingIcon() {
-    const hour = new Date().getHours();
-    if (hour < 12) return 'bi-sun-fill';
-    if (hour < 17) return 'bi-brightness-high-fill';
-    return 'bi-moon-stars-fill';
-  }
-
-  // ── Apply user info across the page ────────────────────
-  function applyUserInfo() {
-    const initial = currentUser.firstName.charAt(0).toUpperCase();
-
-    // Greeting headline
-    const greetEl = document.getElementById('dashboard-greeting');
-    if (greetEl) {
-      greetEl.innerHTML =
-        `${getGreeting()}, <em>${currentUser.firstName}</em> ` +
-        `<i class="bi ${getGreetingIcon()}" aria-hidden="true"></i>`;
-    }
-
-    // Header name & avatar
-    const headerUname = document.getElementById('header-uname');
-    if (headerUname) headerUname.textContent = currentUser.fullName;
-
-    const headerAvatar = document.getElementById('header-avatar');
-    if (headerAvatar) headerAvatar.textContent = initial;
-
-    // Profile section
-    const profileName = document.getElementById('profile-name');
-    if (profileName) profileName.textContent = currentUser.fullName;
-
-    const profileAvatar = document.getElementById('profile-avatar');
-    if (profileAvatar) profileAvatar.textContent = initial;
-
-    const profileInputName = document.getElementById('profile-input-name');
-    if (profileInputName) profileInputName.value = currentUser.fullName;
-  }
-
-  // ── View switching ──────────────────────────────────────
-  function switchView(id) {
-    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
-
-    document.querySelectorAll('.sidebar-item').forEach(s => s.classList.remove('active'));
-    const sb = document.getElementById('usb-' + id.replace('u-',''));
-    if (sb) sb.classList.add('active');
-
-    document.querySelectorAll('.header-nav li').forEach(n => n.classList.remove('active'));
-    const hn = document.getElementById('unav-' + id.replace('u-',''));
-    if (hn) hn.classList.add('active');
-  }
-
-  // ── Init ────────────────────────────────────────────────
-  document.addEventListener('DOMContentLoaded', () => {
-    applyUserInfo();
-    renderUserBorrows();
-    renderSearchResults();
-    renderHistory();
-    renderIssueBorrows();
-    setIssueDefaultDates();
-    renderReturnBorrows();
-    populateReturnSelect();
-    setReturnDefaultDate();
-  });
-
-  // ── Mobile nav & sidebar toggle ─────────────────────────
-  (function () {
-    const header = document.querySelector('.app-header');
-    if (!header) return;
-
-    const toggle = document.createElement('button');
-    toggle.className = 'mobile-nav-toggle';
-    toggle.setAttribute('aria-label', 'Open menu');
-    toggle.innerHTML = '<i class="bi bi-list"></i>';
-    header.prepend(toggle);
-
-    const backdrop = document.createElement('div');
-    backdrop.className = 'sidebar-backdrop';
-    document.body.appendChild(backdrop);
-
-    const sidebar = document.querySelector('.sidebar');
-    const headerNav = document.querySelector('.header-nav');
-
-    function openMenu() {
-      if (sidebar)    sidebar.classList.add('open');
-      if (headerNav)  headerNav.classList.add('open');
-      backdrop.classList.add('open');
-      toggle.innerHTML = '<i class="bi bi-x-lg"></i>';
-    }
-    function closeMenu() {
-      if (sidebar)    sidebar.classList.remove('open');
-      if (headerNav)  headerNav.classList.remove('open');
-      backdrop.classList.remove('open');
-      toggle.innerHTML = '<i class="bi bi-list"></i>';
-    }
-
-    toggle.addEventListener('click', () =>
-      backdrop.classList.contains('open') ? closeMenu() : openMenu()
-    );
-    backdrop.addEventListener('click', closeMenu);
-
-    document.querySelectorAll('.sidebar-item, .header-nav li').forEach(el => {
-      el.addEventListener('click', closeMenu);
-    });
-  })();
-
-</script>
+<script src="userdashboard-logic.js"></script>
 </body>
 </html>

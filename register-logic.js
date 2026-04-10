@@ -1,5 +1,5 @@
 function doRegister() {
-  // Get values using IDs (more reliable)
+  
   const firstName = document.getElementById('firstName').value.trim();
   const lastName  = document.getElementById('lastName').value.trim();
   const email     = document.getElementById('email').value.trim();
@@ -8,7 +8,7 @@ function doRegister() {
   const confirm   = document.getElementById('confirmPassword').value.trim();
   const terms     = document.getElementById('terms').checked;
 
-  // Validation
+  
   if (!firstName) {
     showToast('error', 'Please enter your first name.');
     return;
@@ -59,7 +59,7 @@ function doRegister() {
     return;
   }
 
-  // Save user to localStorage
+
   localStorage.setItem(
     'bridgesUser',
     JSON.stringify({
@@ -71,7 +71,7 @@ function doRegister() {
     })
   );
 
-  // Success message + redirect
+
   showToast('success', 'Account created! Redirecting to sign in…');
   setTimeout(() => {
     window.location.href = 'index.html';
